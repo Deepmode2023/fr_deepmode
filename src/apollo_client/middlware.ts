@@ -1,13 +1,18 @@
 import { ApolloLink } from "@apollo/client";
 import { useAuthStore } from "@/zustand/authStore";
-import { IAuthStore } from "@/interfaces/auth";
+import { createSelectorHooks } from "auto-zustand-selectors-hook";
+import { LOCALSTORAGE_USER_PK } from "@/global.constant";
+
+const authStore = createSelectorHooks(useAuthStore);
 
 export const authMiddleware = new ApolloLink((operation, forward) => {
-  const access_token = useAuthStore((state: IAuthStore) => state.access_token);
+  const access_token = authStore.useAccess_token();
+  const localStorageData = window?.localStorage?.getItem(LOCALSTORAGE_USER_PK);
+
   operation.setContext(({ headers = {} }) => ({
     headers: {
       ...headers,
-      authorization: access_token ?? "MATHAFACKER",
+      authorization: `Bearer ${localStorageData ?? access_token}`,
     },
   }));
 
