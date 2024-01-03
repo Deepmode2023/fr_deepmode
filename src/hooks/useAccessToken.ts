@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { getAccessToken } from "@/services/api.auth";
 import { LoginUserType } from "@/interfaces/auth";
 import { createSelectorHooks } from "auto-zustand-selectors-hook";

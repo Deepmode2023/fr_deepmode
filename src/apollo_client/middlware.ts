@@ -7,7 +7,8 @@ const authStore = createSelectorHooks(useAuthStore);
 
 export const authMiddleware = new ApolloLink((operation, forward) => {
   const access_token = authStore.useAccess_token();
-  const localStorageData = window?.localStorage?.getItem(LOCALSTORAGE_USER_PK);
+  const localStorageData =
+    global?.window?.localStorage?.getItem(LOCALSTORAGE_USER_PK);
 
   operation.setContext(({ headers = {} }) => ({
     headers: {

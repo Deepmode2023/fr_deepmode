@@ -1,6 +1,6 @@
-import { gql } from "@apollo/client";
+import { gql, DocumentNode } from "@apollo/client";
 
-export const getWords = gql`
+export const getWords = (responseValue: DocumentNode) => gql`
   query GetWords(
     $limmit: Int
     $pagination: Int
@@ -12,19 +12,22 @@ export const getWords = gql`
       commonParams: { limmit: $limmit, pagination: $pagination, skip: $skip }
       slug: $slug
       name: $name
-    ) {
-      __typename
-      ... on ReturnedWordsType {
-        limmit
-        pagination
-        skip
-        data {
-          name
-        }
-      }
-      ... on BasicExeptionsSchema {
-        details
-      }
-    }
+    ) ${responseValue}
+  }
+`;
+
+export const getSpacedRepetition = (responseValue: DocumentNode) => gql`
+  query GetSpacedRepetition(
+    $dateStart: DateTime!
+    $dateEnd: DateTime!
+    $title: String
+    $slug: String
+  ) {
+    GetSpacedRepetition(
+      dateStart: $dateStart
+      dateEnd: $dateEnd
+      title: $title
+      slug: $slug
+    ) ${responseValue}
   }
 `;
