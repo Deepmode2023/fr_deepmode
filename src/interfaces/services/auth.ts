@@ -1,3 +1,5 @@
+import { ITotalResponse } from "../total.response";
+
 export interface IAuthStoreAction {
   changeLoadingStatus: (condition: boolean) => void;
   changeAuthState: (authState: AuthType) => void;
@@ -28,9 +30,10 @@ export type UserType = {
 
 /* For Service type */
 
-export type LoginUserType = {
+export type LoginUserParamsType = {
   username: string;
   password: string;
 };
 
 export type ResponseLoginUserType = Omit<AuthType, "user" | "isAuth">;
+export type ResponseRefreshTokenType = ITotalResponse<ResponseLoginUserType>;

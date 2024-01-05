@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { IAuthStore, ResponseLoginUserType } from "@/interfaces/auth";
+import { IAuthStore, ResponseLoginUserType } from "@/interfaces/services/auth";
 import { parseJwt } from "@/utils/jwt";
 import { LOCALSTORAGE_USER_PK } from "@/global.constant";
 
