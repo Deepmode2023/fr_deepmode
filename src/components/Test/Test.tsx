@@ -1,12 +1,17 @@
 "use client";
-import { useState, useEffect } from "react";
-import { gql } from "@apollo/client";
-import { getRefreshToken } from "@/services/api.auth";
-import ClientPortal from "@/components/Portal/Portal";
-import { DangerSvg } from "@/assets/icons/DangerSvg";
-import { useRefreshToken } from "@/hooks/useRefreshToken";
+import { useEffect } from "react";
+import { AuthStore } from "@/zustand/authStore";
+import { createSelectorHooks } from "auto-zustand-selectors-hook";
+import { useAccessToken } from "@/hooks/services/useAccessToken";
+import { useUpdateUser } from "@/hooks/services/useUpdateUser";
+import { useCreateUser } from "@/hooks/services/useCreateUser";
+
+const authStore = createSelectorHooks(AuthStore);
 
 export const Test = () => {
-  const [portal, setPortal] = useState(false);
+  const { user, access_token } = authStore.getState();
+  // const { callAPI: callAcessToken, data } = useAccessToken();
+  // const { callAPI: callUpdateUser } = useUpdateUser();
+
   return <div>TEST COMPONENTS</div>;
 };

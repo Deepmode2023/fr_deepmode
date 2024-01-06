@@ -1,9 +1,9 @@
 import { ApolloLink } from "@apollo/client";
-import { useAuthStore } from "@/zustand/authStore";
+import { AuthStore } from "@/zustand/authStore";
 import { createSelectorHooks } from "auto-zustand-selectors-hook";
 import { LOCALSTORAGE_USER_PK } from "@/global.constant";
 
-const authStore = createSelectorHooks(useAuthStore);
+const authStore = createSelectorHooks(AuthStore);
 
 export const authMiddleware = new ApolloLink((operation, forward) => {
   const access_token = authStore.useAccess_token();

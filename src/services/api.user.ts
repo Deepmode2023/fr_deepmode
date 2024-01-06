@@ -6,15 +6,16 @@ import { SERVICES_POINT } from "./constants";
 import {
   ICreateUserParams,
   IResponseCreateUser,
+  IUpdateUserParams,
 } from "@/interfaces/services/user";
-import { boundarySSRComponents } from "@/utils/formData";
+import { AuthStore } from "@/zustand/authStore";
+import { createSelectorHooks } from "auto-zustand-selectors-hook";
 
-export async function createUser(
-  params: ICreateUserParams,
-  isSSR: boolean = true
+const authStore = createSelectorHooks(AuthStore);
+
+export async function createUserService(
+  params: ICreateUserParams
 ): Promise<IResponseCreateUser> {
-  const { formDataSSR, boundary } = boundarySSRComponents(params);
-
   const formData = new FormData();
   for (const [key, value] of Object.entries(params)) {
     formData.append(key, value);
@@ -23,16 +24,33 @@ export async function createUser(
   const make_url = concat_url_path(basic_path)(SERVICES_POINT.POST_CREATE_USER);
 
   const resultData = await fetch(make_url, {
-    body: isSSR ? formDataSSR : formData,
+    body: formData,
     method: "POST",
-    headers: isSSR
-      ? { "Content-type": `multipart/form-data; boundary=${boundary}` }
-      : {},
+    headers: {},
   });
 
-  if (resultData.ok) {
-    new Error("sdfkskdfksdkf");
+  return resultData.json();
+}
+
+export async function updateUserService(
+  params: IUpdateUserParams
+): Promise<IResponseCreateUser> {
+  const { access_token } = authStore.getState();
+
+  const formData = new FormData();
+  for (const [key, value] of Object.entries(params)) {
+    formData.append(key, value);
   }
+
+  const make_url = concat_url_path(basic_path)(SERVICES_POINT.PUT_UPDATE_USER);
+
+  const resultData = await fetch(make_url, {
+    body: formData,
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${access_token ?? ""}`,
+    },
+  });
 
   return resultData.json();
 }

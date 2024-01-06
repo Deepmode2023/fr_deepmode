@@ -11,7 +11,7 @@ import { createSelectorHooks } from "auto-zustand-selectors-hook";
 
 const toastStore = createSelectorHooks(ToastStore);
 
-export async function getAccessToken({
+export async function getAccessTokenService({
   username,
   password,
 }: LoginUserParamsType): Promise<ResponseLoginUserType> {
@@ -22,7 +22,7 @@ export async function getAccessToken({
   return resultData.json();
 }
 
-export async function getRefreshToken(
+export async function getRefreshTokenService(
   refreshToken: string
 ): Promise<ResponseRefreshTokenType> {
   const make_url = concat_url_path(basic_path)(
