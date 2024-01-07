@@ -1,5 +1,6 @@
 import { create } from "zustand";
-import { IAuthStore, ResponseLoginUserType } from "@/interfaces/services/auth";
+import { ResponseLoginUserType } from "@/interfaces/services/auth";
+import { IAuthStore } from "@/interfaces/zustand/auth";
 import { parseJwt } from "@/utils/jwt";
 import { LOCALSTORAGE_USER_PK } from "@/global.constant";
 
@@ -7,7 +8,7 @@ export const AuthStore = create<IAuthStore>()((set) => ({
   user: null,
   isAuth: false,
   refresh_token: null,
-  access_token: `Bearer `,
+  access_token: null,
   isLoading: false,
   changeLoadingStatus: (condition: boolean = false) =>
     set((state: IAuthStore) => ({

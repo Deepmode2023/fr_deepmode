@@ -22,3 +22,12 @@ export const ToastStore = create<IToastStore>()((set) => ({
     });
   },
 }));
+
+export const DisplayToastAdapter = (message: IToastMessage, time: number) => {
+  const { addMessage, removeMessage } = ToastStore.getState();
+
+  addMessage(message);
+  setTimeout(() => {
+    removeMessage(message);
+  }, time);
+};

@@ -1,23 +1,24 @@
 import { useState, useCallback, useMemo } from "react";
-import { updateUserService } from "@/services/api.user";
-import {
-  IUpdateUserParams,
-  ResponseUserType,
-} from "@/interfaces/services/user";
+import { deleteUserService } from "@/services/api.user";
+import { ResponseUserType } from "@/interfaces/services/user";
 import { DisplayToastAdapter } from "@/zustand/toastStore";
 import { TIME_DISPLAY_TOAST } from "@/global.constant";
 import { BodyDetailType } from "@/interfaces/total.response";
 import { IServiceHooksResponse } from "@/interfaces/service.hooks";
 
-export const useUpdateUser = (): IServiceHooksResponse<
-  IUpdateUserParams,
+export type deleteParamsType = {
+  email: string;
+};
+
+export const useDeleteUser = (): IServiceHooksResponse<
+  deleteParamsType,
   BodyDetailType<ResponseUserType> | null
 > => {
   const [details, setDetails] =
     useState<BodyDetailType<ResponseUserType> | null>(null);
 
-  const callAPI = useCallback((params: IUpdateUserParams) => {
-    updateUserService(params).then((resolve) => {
+  const callAPI = useCallback(({ email }: deleteParamsType) => {
+    deleteUserService(email).then((resolve) => {
       const message = {
         message: resolve.detail[0].msg,
         condition: resolve.detail[0].type as "success" | "error" | "warning",

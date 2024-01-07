@@ -6,10 +6,7 @@ import { concat_url_path } from "@/utils/url";
 import { SERVICES_POINT } from "./constants";
 import { ResponseRefreshTokenType } from "@/interfaces/services/auth";
 import { basic_path } from "./constants";
-import { ToastStore } from "@/zustand/toastStore";
-import { createSelectorHooks } from "auto-zustand-selectors-hook";
-
-const toastStore = createSelectorHooks(ToastStore);
+import { BodyDetailType } from "@/interfaces/total.response";
 
 export async function getAccessTokenService({
   username,

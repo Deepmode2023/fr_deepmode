@@ -1,10 +1,5 @@
 import { ITotalResponse } from "../total.response";
 
-export interface IAuthStoreAction {
-  changeLoadingStatus: (condition: boolean) => void;
-  changeAuthState: (authState: AuthType) => void;
-}
-
 export type AuthType = {
   user: UserType | null;
   isAuth: boolean;
@@ -13,10 +8,6 @@ export type AuthType = {
   expire_time?: string | null;
   type_token?: string | null;
 };
-
-export interface IAuthStore extends IAuthStoreAction, AuthType {
-  isLoading: boolean;
-}
 
 export type UserType = {
   user_id: string;

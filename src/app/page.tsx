@@ -1,6 +1,7 @@
 import { Test } from "@/components/Test/Test";
 import { Toast } from "@/components/Toast/Toast";
 import { ApolloWrapper } from "@/apollo_client/client_provider";
+import { getSharedPreference } from "@/services/api.sharedPreference";
 
 export default async function Home() {
   return (

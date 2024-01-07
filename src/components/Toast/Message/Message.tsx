@@ -50,13 +50,13 @@ const Message: FC<PropsMessageType> = ({
       }}
     >
       <div className={styles.icons}>
-        {ICONS[condition].icon}
+        {ICONS(condition).icon}
         <span
           className={styles.border}
-          style={{ backgroundColor: COLORS_CONDITION[condition].color }}
+          style={{ backgroundColor: COLORS_CONDITION(condition).color }}
         />
       </div>
-      <div className={styles.title}>{ICONS[condition].title}</div>
+      <div className={styles.title}>{ICONS(condition).title}</div>
       <div className={styles.message}>{message}</div>
       <div
         className={styles.close}
@@ -66,7 +66,7 @@ const Message: FC<PropsMessageType> = ({
       </div>
       <div
         className={styles.progressBar}
-        style={{ backgroundColor: COLORS_CONDITION[condition].light }}
+        style={{ backgroundColor: COLORS_CONDITION(condition).light }}
       >
         <motion.div
           animate={{
@@ -77,7 +77,7 @@ const Message: FC<PropsMessageType> = ({
           }}
           className={styles.progressLine}
           style={{
-            backgroundColor: COLORS_CONDITION[condition].color,
+            backgroundColor: COLORS_CONDITION(condition).color,
           }}
         />
       </div>

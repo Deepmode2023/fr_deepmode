@@ -13,7 +13,7 @@ import { parseJwt } from "@/utils/jwt";
 
 import { createSelectorHooks } from "auto-zustand-selectors-hook";
 import { AuthStore } from "@/zustand/authStore";
-import { ToastStore } from "@/zustand/toastStore";
+import { ToastStore, DisplayToastAdapter } from "@/zustand/toastStore";
 
 const toastStore = createSelectorHooks(ToastStore);
 const authStore = createSelectorHooks(AuthStore);
@@ -22,6 +22,7 @@ export const useAccessToken = (): IServiceHooksResponse<
   LoginUserParamsType,
   AuthType
 > => {
+  const [error, setError] = useState<string | null>(null);
   const { changeLoadingStatus, changeAuthState } = authStore.getState();
   const { addMessage, removeMessage } = toastStore.getState();
   const [decodeJwt, setDecodeJwt] = useState<IDecodeJWT | null>(null);
@@ -30,10 +31,17 @@ export const useAccessToken = (): IServiceHooksResponse<
   const callAPI = useCallback(
     ({ password, username }: LoginUserParamsType) => {
       changeLoadingStatus(true);
-      getAccessTokenService({ password, username }).then((response) => {
+      getAccessTokenService({ password, username }).then((response): void => {
         if (response?.access_token) {
           setTokenResponse(response);
           setDecodeJwt(parseJwt(response.access_token));
+        }
+
+        //TODO ----> CHANGE THIS LOGIC WHEN CREATE NORMAL RESPONSE ACCESS TOKEN
+        // @ts-ignore
+        if (response?.detail && response?.detail[0]?.type === "error") {
+          // @ts-ignore
+          setError(response.detail[0].msg);
         }
       });
     },
@@ -42,20 +50,26 @@ export const useAccessToken = (): IServiceHooksResponse<
 
   useEffect(() => {
     if (tokenResponse?.access_token) {
-      addMessage({
-        condition: "success",
-        message: "You've successfully authorized in Deepmode!",
-        time: TIME_DISPLAY_TOAST,
-      });
-      setTimeout(() => {
-        removeMessage({
+      DisplayToastAdapter(
+        {
           condition: "success",
           message: "You've successfully authorized in Deepmode!",
           time: TIME_DISPLAY_TOAST,
-        });
-      }, TIME_DISPLAY_TOAST);
+        },
+        TIME_DISPLAY_TOAST
+      );
     }
-  }, [addMessage, removeMessage, tokenResponse]);
+    if (error) {
+      DisplayToastAdapter(
+        {
+          condition: "error",
+          message: error,
+          time: TIME_DISPLAY_TOAST,
+        },
+        TIME_DISPLAY_TOAST
+      );
+    }
+  }, [addMessage, removeMessage, tokenResponse, error]);
 
   useEffect(() => {
     if (tokenResponse?.access_token && decodeJwt) {

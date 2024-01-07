@@ -10,8 +10,8 @@ export const SERVICES_POINT = {
   DELETE_DELETE_USER: "user/delete_user",
 
   //SHARED_PREFERENCE
-  GET_SHARED_PREFERENCE: "shared_preference",
-  PUT_SHARED_PREFERENCE: "shared_preference",
+  GET_SHARED_PREFERENCE: "shared-preference",
+  PUT_SHARED_PREFERENCE: "shared-preference",
 };
 
 export const basic_path =
