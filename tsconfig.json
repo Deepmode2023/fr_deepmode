@@ -27,7 +27,9 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/components/Toast/constants.js"
+    "src/components/Toast/constants.js",
+    "src/components/Test/__test__/test.test.js",
+    "jest.config.js"
   ],
   "exclude": ["node_modules"]
 }
