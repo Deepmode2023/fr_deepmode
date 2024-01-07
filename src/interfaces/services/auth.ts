@@ -1,7 +1,4 @@
-export interface IAuthStoreAction {
-  changeLoadingStatus: (condition: boolean) => void;
-  changeAuthState: (authState: AuthType) => void;
-}
+import { ITotalResponse } from "../total.response";
 
 export type AuthType = {
   user: UserType | null;
@@ -11,10 +8,6 @@ export type AuthType = {
   expire_time?: string | null;
   type_token?: string | null;
 };
-
-export interface IAuthStore extends IAuthStoreAction, AuthType {
-  isLoading: boolean;
-}
 
 export type UserType = {
   user_id: string;
@@ -28,9 +21,10 @@ export type UserType = {
 
 /* For Service type */
 
-export type LoginUserType = {
+export type LoginUserParamsType = {
   username: string;
   password: string;
 };
 
 export type ResponseLoginUserType = Omit<AuthType, "user" | "isAuth">;
+export type ResponseRefreshTokenType = ITotalResponse<ResponseLoginUserType>;

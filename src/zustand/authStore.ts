@@ -1,13 +1,14 @@
 import { create } from "zustand";
-import { IAuthStore, ResponseLoginUserType } from "@/interfaces/auth";
+import { ResponseLoginUserType } from "@/interfaces/services/auth";
+import { IAuthStore } from "@/interfaces/zustand/auth";
 import { parseJwt } from "@/utils/jwt";
 import { LOCALSTORAGE_USER_PK } from "@/global.constant";
 
-export const useAuthStore = create<IAuthStore>()((set) => ({
+export const AuthStore = create<IAuthStore>()((set) => ({
   user: null,
   isAuth: false,
   refresh_token: null,
-  access_token: `Bearer `,
+  access_token: null,
   isLoading: false,
   changeLoadingStatus: (condition: boolean = false) =>
     set((state: IAuthStore) => ({
@@ -27,10 +28,12 @@ export const useAuthStore = create<IAuthStore>()((set) => ({
 
       return {
         ...state,
+        access_token: authState.access_token,
+        refresh_token: authState.refresh_token,
         user: userObj.user,
         isAuth: Boolean(userObj.user),
         isLoading: false,
-        expire_time: new Date(userObj?.exp, 0).toString(),
+        expire_time: new Date(userObj?.exp * 1000).toString(),
       };
     }),
 }));

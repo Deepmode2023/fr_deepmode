@@ -1,16 +1,35 @@
-import { LoginUserType } from "@/interfaces/auth";
+import {
+  LoginUserParamsType,
+  ResponseLoginUserType,
+} from "@/interfaces/services/auth";
 import { concat_url_path } from "@/utils/url";
 import { SERVICES_POINT } from "./constants";
+import { ResponseRefreshTokenType } from "@/interfaces/services/auth";
+import { basic_path } from "./constants";
+import { BodyDetailType } from "@/interfaces/total.response";
 
-const basic_path =
-  process.env.BASIC_API_BACKAND_URL ??
-  process.env.NEXT_PUBLIC_BASIC_API_BACKAND_URL ??
-  "";
-
-export async function getAccessToken({ username, password }: LoginUserType) {
+export async function getAccessTokenService({
+  username,
+  password,
+}: LoginUserParamsType): Promise<ResponseLoginUserType> {
   const body = new URLSearchParams({ username, password });
-  const make_url = concat_url_path(basic_path)(SERVICES_POINT.TOKEN);
+  const make_url = concat_url_path(basic_path)(SERVICES_POINT.POST_TOKEN);
   const resultData = await fetch(make_url, { body, method: "POST" });
+
+  return resultData.json();
+}
+
+export async function getRefreshTokenService(
+  refreshToken: string
+): Promise<ResponseRefreshTokenType> {
+  const make_url = concat_url_path(basic_path)(
+    SERVICES_POINT.POST_REFRESH_TOKEN
+  );
+
+  let resultData = await fetch(make_url, {
+    method: "POST",
+    headers: { "refresh-token": refreshToken },
+  });
 
   return resultData.json();
 }
