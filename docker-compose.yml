@@ -1,0 +1,50 @@
+version: "3.9"
+
+services:
+  deepmode_frontend:
+    container_name: deepmode_frontend
+    build: .
+    env_file:
+      - .env
+    ports:
+      - 8001:8000
+    depends_on:
+      - deepmode_app
+    volumes:
+      - .:/app
+    command: bash -c "yarn dev"
+
+  deepmode_app:
+    container_name: deepmode_app
+    build:
+      context: ../deepmode_backend
+      dockerfile: Dockerfile
+    env_file:
+      - ../deepmode_backend/.env
+    ports:
+      - 8000:3000
+    depends_on:
+      deepmode_db:
+        condition: service_healthy
+    command: bash -c "poetry run alembic upgrade head \
+      && poetry run uvicorn main:main_app --host 0.0.0.0 --port 3000 --reload"
+    volumes:
+      - deepmode_backend:/app
+
+  deepmode_db:
+    container_name: deepmode_db
+    image: postgres:14-alpine
+    restart: always
+    env_file:
+      - ../deepmode_backend/.env
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d deepmode -U postgres"]
+      interval: 1s
+      timeout: 5s
+      retries: 10
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:
+  deepmode_backend:
