@@ -4,4 +4,5 @@ export interface ISVGIconProps {
   width?: number;
   height?: number;
   strokeWidth?: number;
+  isAnimate?: boolean;
 }

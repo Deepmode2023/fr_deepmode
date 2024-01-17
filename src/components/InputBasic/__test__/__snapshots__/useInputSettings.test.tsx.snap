@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Check correct work hooks useInputSettings useInputSettings snapshot 1`] = `
+{
+  "rerender": [Function],
+  "result": {
+    "current": {
+      "callbackIconClick": [Function],
+      "color": "#42b883",
+      "iconButton": null,
+      "isValid": true,
+      "message": "some",
+      "setTouch": [Function],
+      "setValue": [Function],
+      "touch": true,
+      "typeInput": "email",
+      "value": "Some value typing...",
+    },
+  },
+  "unmount": [Function],
+}
+`;

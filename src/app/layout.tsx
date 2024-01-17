@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Figtree } from "next/font/google";
 import "./globals.css";
 import { PORTAL_ID } from "@/global.constant";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Figtree({ weight: "300", style: "normal", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
