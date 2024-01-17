@@ -11,12 +11,8 @@ export const Test = () => {
         type="email"
         placeholder="Some place"
         icon={(color) => <SettingsSvg strokeColor={color} />}
-        validateSettings={{ displayIcon: true, displayMessage: false }}
+        validateSettings={{ displayIcon: true, displayMessage: true }}
       ></InputBasic>
-      <InputBasic
-        onChangeValue={(value) => console.log(value)}
-        type="password"
-      />
     </div>
   );
 };

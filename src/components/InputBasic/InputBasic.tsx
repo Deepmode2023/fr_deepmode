@@ -1,45 +1,11 @@
 "use client";
 import { mergeCls } from "@/utils/cls";
 import { FC } from "react";
-import {
-  IStandartValidateValue,
-  SPECIAL_VALIDATE,
-} from "@/interfaces/validate";
+import { IInputBasicProps } from "./interface";
 import { Icon } from "./components/Icon/Icon";
 import { Placeholder } from "./components/Placeholder/Placeholder";
 import { useInputSettings } from "./useInputSettings";
-
-export type InputClassnameType = {
-  container?: string;
-  inputContainer?: string;
-  input?: string;
-};
-
-export type OnClickIconParamsType = {
-  color?: string;
-  touch?: boolean;
-  isValid?: boolean;
-  type?: SPECIAL_VALIDATE;
-};
-
-export type ValidateSettings = {
-  displayIcon: boolean;
-  displayMessage: boolean;
-};
-
-export interface IInputBasicProps {
-  classname?: InputClassnameType;
-  placeholder?: string;
-  icon?: (color: string) => JSX.Element;
-  type: SPECIAL_VALIDATE;
-  validateSettings?: ValidateSettings;
-  onClickIcon?: (params: OnClickIconParamsType) => void;
-  onChangeValue: (value: string) => void;
-  onValidateInput?: (
-    value: string,
-    type: SPECIAL_VALIDATE
-  ) => IStandartValidateValue;
-}
+import { ID_TESTING } from "./constants";
 
 const InputBasic: FC<IInputBasicProps> = ({
   classname = {},
@@ -90,7 +56,7 @@ const InputBasic: FC<IInputBasicProps> = ({
             setTouch(!isValid);
             onChangeValue(value);
           }}
-          data-testid="input-basic-input"
+          data-testid={ID_TESTING.input}
           value={value}
         />
         <Icon

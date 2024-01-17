@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { ID_TESTING } from "../../constants";
 
 type IPlaceholderProps = {
   color: string;
@@ -31,6 +32,7 @@ export const Placeholder: FC<IPlaceholderProps> = ({
 }) => {
   const content =
     validateMessage && message?.length > 0 ? message : placeholder;
+
   return (
     <div style={{ color }} className="text-xs select-none overflow-hidden">
       <AnimatePresence mode="wait">
@@ -42,6 +44,7 @@ export const Placeholder: FC<IPlaceholderProps> = ({
             exit="exit"
             variants={variant}
             transition={{ duration: 0.3 }}
+            data-testid={ID_TESTING.placeholder}
           >
             {content}
           </motion.div>

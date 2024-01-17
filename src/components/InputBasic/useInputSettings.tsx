@@ -4,11 +4,11 @@ import {
   SPECIAL_VALIDATE,
   IStandartValidateValue,
 } from "@/interfaces/validate";
-import { OnClickIconParamsType } from "./InputBasic";
+import { OnClickIconParamsType } from "./interface";
 import { EyeSvg, CloseEyeSvg } from "@/assets/icons";
-import { SIZE_ICONS } from "./constants";
+import { COLORS, SIZE_ICONS } from "./constants";
 
-type useValueType = {
+export type UseValueType = {
   onValidateInput?: (
     value: string,
     type: SPECIAL_VALIDATE
@@ -23,7 +23,7 @@ export const useInputSettings = ({
   type,
   onClickIcon,
   icon,
-}: useValueType) => {
+}: UseValueType) => {
   const [value, setValue] = useState("");
   const [touch, setTouch] = useState(false);
   const [visiblePassword, setVisisblePassword] = useState(false);
@@ -35,10 +35,10 @@ export const useInputSettings = ({
     : StandartValidate(value, type);
 
   const color = !touch
-    ? "#6B7280"
+    ? COLORS.usually
     : conditionInput.isValidate
-    ? "#42b883"
-    : "#f73963";
+    ? COLORS.success
+    : COLORS.error;
 
   useEffect(() => {
     if (icon) setIconButton(icon(color));

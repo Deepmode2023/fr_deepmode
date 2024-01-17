@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { CheckSvg, WarningSvg } from "@/assets/icons";
-import { OnClickIconParamsType } from "../../InputBasic";
-import { SIZE_ICONS } from "../../constants";
+import { OnClickIconParamsType } from "../../interface";
+import { SIZE_ICONS, ID_TESTING } from "../../constants";
 
 type IconTypeProps = {
   icon?: JSX.Element | null;
@@ -22,7 +22,7 @@ export const Icon: FC<IconTypeProps> = ({
 
   if (validateIcon) {
     return (
-      <div className={totalCls}>
+      <div className={totalCls} data-testid={ID_TESTING.icon}>
         {isValid ? (
           <CheckSvg
             strokeColor={color}
@@ -43,6 +43,7 @@ export const Icon: FC<IconTypeProps> = ({
   if (icon && !validateIcon)
     return (
       <div
+        data-testid={ID_TESTING.icon}
         onClick={() => callbackIconClick({ isValid, color })}
         className={totalCls}
       >

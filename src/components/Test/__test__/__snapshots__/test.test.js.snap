@@ -1,7 +1,52 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Page renders a heading 1`] = `
-<div>
-  TEST COMPONENTS
+<div
+  style={
+    {
+      "width": 300,
+    }
+  }
+>
+  <div
+    className="flex flex-col gap-1 w-full"
+  >
+    <div
+      className="flex border-b-2 gap-1 items-center"
+      style={
+        {
+          "borderColor": "#6B7280",
+        }
+      }
+    >
+      <input
+        className="w-full bg-transparent outline-none text-gray-700 "
+        data-testid="input-basic-input"
+        onBlur={[Function]}
+        onChange={[Function]}
+        type="email"
+        value=""
+      />
+    </div>
+    <div
+      className="text-xs select-none overflow-hidden"
+      style={
+        {
+          "color": "#6B7280",
+        }
+      }
+    >
+      <div
+        data-testid="input-basic-placeholder"
+        style={
+          {
+            "height": "0px",
+          }
+        }
+      >
+        Some place
+      </div>
+    </div>
+  </div>
 </div>
 `;

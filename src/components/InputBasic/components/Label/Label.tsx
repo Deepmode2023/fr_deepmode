@@ -1,5 +1,6 @@
 import React from "react";
 import { mergeCls } from "@/utils/cls";
+import { ID_TESTING } from "../../constants";
 
 export type LableType = {
   children: React.ReactElement | string;
@@ -14,7 +15,7 @@ export const Label: React.FC<LableType> = ({ children, isUpper = true }) => {
 
   if (typeof children === "string")
     return (
-      <span className={classes} data-testid="input-label">
+      <span className={classes} data-testid={ID_TESTING.label}>
         {children}
       </span>
     );
@@ -23,7 +24,7 @@ export const Label: React.FC<LableType> = ({ children, isUpper = true }) => {
     children &&
     React.Children.map(children, (child) => {
       return React.cloneElement(child, {
-        "data-testid": "input-label",
+        "data-testid": ID_TESTING.label,
         className: `${classes} ${child.props.className || ""}`,
       });
     })

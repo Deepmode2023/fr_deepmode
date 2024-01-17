@@ -30,6 +30,7 @@
     "src/components/Toast/constants.js",
     "src/components/Test/__test__/test.test.js",
     "jest.config.js",
+    "./jest.setup.ts",
     "src/utils/__test__/cls.test.js"
   ],
   "exclude": ["node_modules"]
