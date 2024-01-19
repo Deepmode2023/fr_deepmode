@@ -1,9 +1,4 @@
-import {
-  render,
-  renderHook,
-  RenderHookResult,
-  waitFor,
-} from "@testing-library/react";
+import { renderHook, RenderHookResult, waitFor } from "@testing-library/react";
 import {
   IStandartValidateValue,
   SPECIAL_VALIDATE,
@@ -13,7 +8,6 @@ import { StandartValidate } from "@/utils/validateInput";
 import { useInputSettings, UseValueType } from "../useInputSettings";
 import { EyeSvg, CloseEyeSvg } from "@/assets/icons";
 import { COLORS, SIZE_ICONS } from "../constants";
-import InputBasic from "../InputBasic";
 
 Object.defineProperty(window, "scrollTo", { value: jest.fn() });
 
