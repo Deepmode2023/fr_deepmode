@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Figtree } from "next/font/google";
 import "./globals.css";
 import { PORTAL_ID } from "@/global.constant";
+import { Providers } from "./providers";
 
 const inter = Figtree({ weight: "300", style: "normal", subsets: ["latin"] });
 
@@ -18,8 +19,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div id={PORTAL_ID.TOTAL_PORTAL} />
-        {children}
+        <Providers>
+          <div id={PORTAL_ID.TOTAL_PORTAL} />
+          {children}
+        </Providers>
       </body>
     </html>
   );
