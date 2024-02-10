@@ -1,4 +1,4 @@
-import { mergeCls } from "../cls";
+import { mergeCls } from "@/utils/cls";
 import { expect } from "@jest/globals";
 
 describe("Describe mergeCls function ", () => {
@@ -26,5 +26,9 @@ describe("Describe mergeCls function ", () => {
 
   test("Checked when we pass styles object", () => {
     expect(mergeCls(styles)).toBe("container");
+  });
+
+  test("Snapshot mergeCls", () => {
+    expect(mergeCls(styles)).toMatchSnapshot();
   });
 });

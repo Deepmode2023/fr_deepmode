@@ -6,3 +6,12 @@ export interface ISVGIconProps {
   strokeWidth?: number;
   isAnimate?: boolean;
 }
+
+export type PathItemType = {
+  keyName: string;
+};
+export interface ISVGStackProps extends ISVGIconProps {
+  pathItems: Array<PathItemType>;
+  activeLink?: string | null;
+  onChangeActiveLink?: (activeLink: string | null) => void;
+}

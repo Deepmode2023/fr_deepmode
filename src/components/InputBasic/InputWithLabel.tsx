@@ -1,6 +1,7 @@
 import { mergeCls } from "@/utils/cls";
 import { FC, ReactElement } from "react";
-import InputBasic, { IInputBasicProps, InputClassnameType } from "./InputBasic";
+import InputBasic from "./InputBasic";
+import { IInputBasicProps, InputClassnameType } from "./interface";
 import { Label } from "./components/Label/Label";
 
 type ClassnameType = {

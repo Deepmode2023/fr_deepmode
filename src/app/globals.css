@@ -1,3 +1,24 @@
 @tailwind base;
-@tailwind components;
 @tailwind utilities;
+@tailwind components;
+
+.min-h-100vh {
+  min-height: 100vh;
+}
+/*
+html.dark .bg-global {
+  background-color: #221814;
+}
+
+html.dark .color-global {
+  color: #221814;
+}
+
+html.dark .stroke-global {
+  stroke: #221814;
+}
+
+html.light .bg-global {
+  background-color: white;
+  stroke: black;
+} */

@@ -2,51 +2,17 @@
 
 exports[`Page renders a heading 1`] = `
 <div
-  style={
-    {
-      "width": 300,
-    }
-  }
+  className=""
 >
   <div
-    className="flex flex-col gap-1 w-full"
+    className="p-5 w-full h-[1600px]"
   >
-    <div
-      className="flex border-b-2 gap-1 items-center"
-      style={
-        {
-          "borderColor": "#6B7280",
-        }
-      }
+    <span
+      className="bg-red-400 select-none"
+      onClick={[Function]}
     >
-      <input
-        className="w-full bg-transparent outline-none text-gray-700 "
-        data-testid="input-basic-input"
-        onBlur={[Function]}
-        onChange={[Function]}
-        type="email"
-        value=""
-      />
-    </div>
-    <div
-      className="text-xs select-none overflow-hidden"
-      style={
-        {
-          "color": "#6B7280",
-        }
-      }
-    >
-      <div
-        data-testid="input-basic-placeholder"
-        style={
-          {
-            "height": "0px",
-          }
-        }
-      >
-        Some place
-      </div>
-    </div>
+      Content
+    </span>
   </div>
 </div>
 `;

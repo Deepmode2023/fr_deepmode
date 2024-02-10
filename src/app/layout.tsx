@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { Figtree } from "next/font/google";
 import "./globals.css";
+
 import { PORTAL_ID } from "@/global.constant";
 import { Providers } from "./providers";
+import { mergeCls } from "@/utils/cls";
 
-const inter = Figtree({ weight: "300", style: "normal", subsets: ["latin"] });
+const figtree = Figtree({ weight: "300", style: "normal", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,7 +20,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body
+        className={mergeCls(
+          figtree.className,
+          "bg-white dark:bg-dark-palette-900"
+        )}
+      >
         <Providers>
           <div id={PORTAL_ID.TOTAL_PORTAL} />
           {children}

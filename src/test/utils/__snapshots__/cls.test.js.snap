@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Describe mergeCls function  Snapshot mergeCls 1`] = `"container"`;
