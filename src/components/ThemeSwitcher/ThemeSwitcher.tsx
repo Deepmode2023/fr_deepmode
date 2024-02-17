@@ -10,9 +10,14 @@ import { ThemeColor } from "@/interfaces/services/sharedPreference";
 type ThemeSwitcherType = {
   width: number;
   classes?: ClassesSwitcherType;
+  isTitle?: boolean;
 };
 
-const ThemeSwitcher: FC<ThemeSwitcherType> = ({ width, classes }) => {
+const ThemeSwitcher: FC<ThemeSwitcherType> = ({
+  width,
+  classes,
+  isTitle = true,
+}) => {
   const { theme, setTheme } = useTheme();
   const { theme: themeStore, addSharedPreference } =
     SharedPreferenceStore.getState();
@@ -40,7 +45,7 @@ const ThemeSwitcher: FC<ThemeSwitcherType> = ({ width, classes }) => {
 
   return (
     <div className="flex items-center gap-2">
-      <span className="font-black">THEME:</span>
+      {isTitle && <span className="font-black">THEME:</span>}
       <Switcher
         onSwitchClick={onSwitcherHandler}
         active={theme === "dark" ? "left" : "right"}

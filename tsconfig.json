@@ -31,7 +31,10 @@
     "src/components/Test/__test__/test.test.js",
     "jest.config.js",
     "./jest.setup.ts",
-    "src/utils/__test__/cls.test.js"
+    "src/utils/bounce.js",
+    "src/components/AuthNavbar/constants.js",
+    "src/test/helpers/render.js",
+    "src/components/AuthNavbar/dialogs/index.js"
   ],
   "exclude": ["node_modules"]
 }

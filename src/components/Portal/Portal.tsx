@@ -1,21 +1,40 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
 type ClientPortalInterface = {
   children: React.ReactNode;
-  show?: boolean;
+  show: boolean;
   onClose?: () => void;
   selector: string;
 };
 
 const ClientPortal = ({ children, selector, show }: ClientPortalInterface) => {
-  const ref = useRef<Element | null>(null);
-  useEffect(() => {
-    ref.current = document.getElementById(selector);
-  }, [selector]);
+  const [blocked, setBlocked] = useState(false);
+  const [mount, setMount] = useState(false);
 
-  return show && ref.current ? createPortal(children, ref.current) : null;
+  useEffect(() => {
+    setMount(true);
+  }, []);
+
+  useLayoutEffect(() => {
+    setBlocked(true);
+
+    const timeoutId = setTimeout(() => {
+      setBlocked(false);
+    }, 1500);
+
+    return function cleanup() {
+      clearTimeout(timeoutId);
+    };
+  }, [show]);
+
+  if (!show || !mount) return null;
+  const reference = window.document.getElementById(selector);
+
+  console.log(reference, show);
+
+  return reference ? createPortal(children, reference) : null;
 };
 
 export default ClientPortal;
