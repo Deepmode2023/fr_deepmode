@@ -1,48 +1,53 @@
 "use client";
-import React, { useMemo } from "react";
+import React from "react";
+import { useRouter } from "next/navigation";
 import { IRouteWithChildRouteInterface } from "@/interfaces/routes";
 import { createSelectorHooks } from "auto-zustand-selectors-hook";
 import { NavbarStore } from "@/zustand/navbarStore";
 import { Accordion } from "../../Accordion/Accordion";
 import { motion } from "framer-motion";
-import { debounce } from "@/utils/bounce";
 
 import { Header } from "./NavbarItemHeader";
 
-export interface IItemNavbarProps {
+interface IItemNavbarProps {
   propsLink: IRouteWithChildRouteInterface;
 }
 
-export const navbarStore = createSelectorHooks(NavbarStore);
+const navbarStore = createSelectorHooks(NavbarStore);
 
-export const ItemNavbar: React.FC<IItemNavbarProps> = ({
+const NavbarItem: React.FC<IItemNavbarProps> = ({
   propsLink: { Icon, childRoute, ...propsLink },
 }) => {
+  const router = useRouter();
   const changeNavbarItem = navbarStore.useChangeActiveItem();
   const activeItem = navbarStore.useActiveItem();
 
-  const onClickHeader = () => {
-    changeNavbarItem(propsLink.name);
-  };
-
-  const childItems = useMemo(() => {
-    return childRoute.map((child) => {
-      return {
-        title: child.title,
-        keyChildName: child.name,
-        onClickHandler: onClickHeader,
-      };
+  const isActiveAccordion =
+    activeItem === propsLink.name ||
+    childRoute.some((child) => {
+      if (activeItem === child.name) return true;
+      return false;
     });
-  }, [childRoute]);
+
+  const childItems = childRoute.map((child) => {
+    return {
+      title: child.title,
+      keyChildName: child.name,
+      onClickHandler: (keyName: string) => {
+        changeNavbarItem(keyName);
+        router.push(child.path);
+      },
+    };
+  });
 
   return (
     <div className="relative">
       <Accordion
         keyName={propsLink.name}
-        forceInteraptActive={activeItem !== propsLink.name}
+        forceInteraptActive={!isActiveAccordion}
         header={
-          <>
-            {activeItem === propsLink.name && (
+          <React.Fragment>
+            {isActiveAccordion && (
               <motion.span
                 initial={{ height: 0 }}
                 animate={{ height: "100%", transition: { duration: 0.3 } }}
@@ -54,12 +59,17 @@ export const ItemNavbar: React.FC<IItemNavbarProps> = ({
               title={propsLink.title}
               Icon={<Icon strokeColor={"stroke-white"} />}
             />
-          </>
+          </React.Fragment>
         }
         width={300}
-        onClickHeader={onClickHeader}
+        onClickHeader={(keyName: string) => {
+          changeNavbarItem(keyName);
+          if (childItems.length < 1) router.push(propsLink.path);
+        }}
         childItems={childItems}
       />
     </div>
   );
 };
+
+export { type IItemNavbarProps, NavbarItem };

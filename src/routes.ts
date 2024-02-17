@@ -15,15 +15,15 @@ export const Routes: Array<IRouteWithChildRouteInterface> = [
     active: true,
     childRoute: [
       {
-        name: "test1",
-        title: "test1",
-        path: "/test1/",
+        name: "repetition",
+        title: "Repetition",
+        path: "/repetition/",
         active: true,
       },
       {
-        name: "test2",
-        title: "test2",
-        path: "/test2/",
+        name: "create repetition",
+        title: "Create repetition",
+        path: "/repetition/create",
         active: true,
       },
     ],
@@ -36,15 +36,15 @@ export const Routes: Array<IRouteWithChildRouteInterface> = [
     active: true,
     childRoute: [
       {
-        name: "test3",
-        title: "test3",
-        path: "/test3/",
+        name: "schedule",
+        title: "Schedule",
+        path: "/schedule/",
         active: true,
       },
       {
-        name: "test4",
-        title: "test4",
-        path: "/test4/",
+        name: "schedule_report",
+        title: "Activity Report",
+        path: "/schedule/report",
         active: true,
       },
     ],
@@ -55,7 +55,20 @@ export const Routes: Array<IRouteWithChildRouteInterface> = [
     path: "/wordmaster/",
     Icon: WordSvg,
     active: true,
-    childRoute: [],
+    childRoute: [
+      {
+        name: "word_report",
+        title: "Word Report",
+        path: "/word/report",
+        active: true,
+      },
+      {
+        name: "assignments",
+        title: "Word Assignments",
+        path: "/word/assignments",
+        active: true,
+      },
+    ],
   },
   {
     name: "roadmap",

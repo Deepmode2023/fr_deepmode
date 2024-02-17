@@ -8,9 +8,10 @@ import { SettingsSvg } from "./SettingsSvg";
 import { CheckSvg } from "./CheckSvg";
 import { EyeSvg } from "./EyeSvg";
 import { CloseEyeSvg } from "./CloseEyeSvg";
-import { StackSvg } from "./StackSvg/StackSvg";
+import StackSvg from "./StackSvg/StackSvg";
 import { AddCircleSvg } from "./AddCircleSvg";
 import { SuccessCircleSvg } from "./SuccessCircleSvg";
+import { AccountSvg } from "./users";
 
 export {
   SuccessCircleSvg,
@@ -26,4 +27,5 @@ export {
   CheckSvg,
   CloseEyeSvg,
   StackSvg,
+  AccountSvg,
 };

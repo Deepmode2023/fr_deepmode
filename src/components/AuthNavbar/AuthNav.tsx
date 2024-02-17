@@ -1,29 +1,34 @@
 "use client";
 import React, { useCallback, useState } from "react";
-import { IAuthNavigationProps } from "@/interfaces/components/navbar";
+import { IAuthNavigationProps } from "@/interfaces/components/navbar/authnavbar";
 import Image from "next/image";
 import Demo from "@/assets/demo.jpeg";
 import { createSelectorHooks } from "auto-zustand-selectors-hook";
 import { NavbarStore } from "@/zustand/navbarStore";
-import { AddCircleSvg, StackSvg, SuccessCircleSvg } from "@/assets/icons";
-import { AddWordButton } from "./components/AddWordButton/AddWordButton";
-import { mergeCls } from "@/utils/cls";
+import { StackSvg } from "@/assets/icons";
+import { AddWordButton } from "@/components/AuthNavbar/AddWordButton";
+import { AuthSubLinkProperty } from "./constants";
+import { AuthAssideStore } from "@/zustand/authAssideStore";
+import { dialogs } from "./dialogs";
 
 const navbarStore = createSelectorHooks(NavbarStore);
+const authAssideStore = createSelectorHooks(AuthAssideStore);
 
-export const AuthNavigation: React.FC<IAuthNavigationProps> = (props) => {
-  const [addWords, setAddWords] = useState(false);
+const AuthNavigation: React.FC<IAuthNavigationProps> = () => {
   const changeActiveLink = navbarStore.useChangeAuthActiveLink();
   const activeLink = navbarStore.useAuthActiveLink();
+  const changeAuthAssideDialog = authAssideStore.useChangeAssideDialog();
 
   const onChangeActiveLink = useCallback(
-    (activeLink: string | null) => {
-      changeActiveLink(activeLink);
+    (keyName: "string" | "main") => {
+      const { assideContent, assideHeader } = dialogs(keyName);
+      changeActiveLink(keyName);
+      changeAuthAssideDialog(assideContent, assideHeader, keyName !== "main");
     },
-    [changeActiveLink]
+    [changeActiveLink, changeAuthAssideDialog]
   );
   return (
-    <nav className="p-[10px] w-[400px] h-[100px] select-none grid items-center bg-light-total dark:bg-dark-total  border-l-8 border-light-color1 dark:border-dark-color3 ">
+    <nav className="p-[10px] w-[400px] h-[100px] select-none grid items-center bg-light-total dark:bg-dark-total  border-l-8 border-light-color1 dark:border-dark-color3 relative">
       <AddWordButton />
       <div className="absolute top-[10px] right-[30px]">
         <Image
@@ -42,14 +47,12 @@ export const AuthNavigation: React.FC<IAuthNavigationProps> = (props) => {
             isAnimate={false}
             activeLink={activeLink}
             onChangeActiveLink={onChangeActiveLink}
-            pathItems={[
-              { keyName: "setting" },
-              { keyName: "statistic" },
-              { keyName: "statistic1" },
-            ]}
+            pathItems={AuthSubLinkProperty.map(({ keyName }) => ({ keyName }))}
           />
         </div>
       </div>
     </nav>
   );
 };
+
+export { AuthNavigation, type IAuthNavigationProps };

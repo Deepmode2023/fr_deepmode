@@ -1,11 +1,11 @@
 import { create } from "zustand";
 import { INavbarStore } from "@/interfaces/zustand/navbar";
 
-export const NavbarStore = create<INavbarStore>()((set) => ({
+const NavbarStore = create<INavbarStore>()((set) => ({
   activeItem: null,
-  authActiveLink: null,
+  authActiveLink: "main",
 
-  changeActiveItem: (activeItem: string | null) =>
+  changeActiveItem: (activeItem: string | "main") =>
     set((state: INavbarStore) => {
       //SOME LOGIC
 
@@ -14,7 +14,7 @@ export const NavbarStore = create<INavbarStore>()((set) => ({
         activeItem,
       };
     }),
-  changeAuthActiveLink: (authActiveLink: string | null) =>
+  changeAuthActiveLink: (authActiveLink: string | "main") =>
     set((state: INavbarStore) => {
       return {
         ...state,
@@ -22,3 +22,5 @@ export const NavbarStore = create<INavbarStore>()((set) => ({
       };
     }),
 }));
+
+export { NavbarStore, type INavbarStore };

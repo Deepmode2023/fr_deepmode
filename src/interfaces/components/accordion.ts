@@ -8,7 +8,7 @@ export type ClassesAccordionType = {
 
 export interface IAccordionItemProps {
   keyChildName: string;
-  title: string;
+  title: string | ReactNode;
   onClickHandler: (keyName: string) => void;
   classes?: string;
 }
@@ -20,7 +20,5 @@ export interface IAccordionProps {
   onClickHeader?: (keyName: string) => void;
   width?: number;
   classes?: ClassesAccordionType;
-  childItems?: Array<
-    Omit<IAccordionItemProps, "childActive" | "keyActive" | "changeChildKey">
-  >;
+  childItems?: Array<IAccordionItemProps>;
 }

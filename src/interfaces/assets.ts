@@ -1,3 +1,4 @@
+import { AuthActiveLinkType } from "@/interfaces/zustand/navbar";
 export interface ISVGIconProps {
   fill?: string;
   strokeColor?: string;
@@ -13,5 +14,5 @@ export type PathItemType = {
 export interface ISVGStackProps extends ISVGIconProps {
   pathItems: Array<PathItemType>;
   activeLink?: string | null;
-  onChangeActiveLink?: (activeLink: string | null) => void;
+  onChangeActiveLink?: (activeLink: AuthActiveLinkType | null) => void;
 }

@@ -25,7 +25,7 @@ const SwitcherBasic: React.FC<ISwitcherBasicProps> = ({
       style={{ width }}
       className={mergeCls(
         fontRoboto.className,
-        "rounded-full h-[50px] uppercase relative flex items-center justify-between p-[7px] dark:shadow-sm dark:shadow-white shadow-md",
+        "rounded-full min-h-[50px] uppercase relative flex items-center justify-between p-[7px] dark:shadow-sm dark:shadow-white shadow-sm",
         classes?.container
       )}
     >

@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import { mergeCls } from "@/utils/cls";
 import { StackPath } from "./StackPath";
 
-import { useId } from "react";
+import { memo, useId } from "react";
 
-export const StackSvg = ({
+const StackSvg = ({
   strokeColor,
   width = 24,
   height = 24,
@@ -75,11 +75,11 @@ export const StackSvg = ({
       <motion.path
         {...animateProps({ isAnimate })}
         d={`M13.01 2.92007L18.91 5.54007C20.61 6.29007 20.61 7.53007 18.91 8.28007L13.01 10.9001C12.34 11.2001 11.24 11.2001 10.57 10.9001L4.67 8.28007C2.97 7.53007 2.97 6.29007 4.67 5.54007L10.57 2.92007C11.24 2.62007 12.34 2.62007 13.01 2.92007Z`}
-        className={mergeCls(strokeColor, !activeLink ? fill : "")}
-        strokeWidth={!activeLink ? 0 : 2}
+        className={mergeCls(strokeColor, activeLink === "main" ? fill : "")}
+        strokeWidth={activeLink === "main" ? 0 : 2}
         strokeLinecap="round"
         strokeLinejoin="round"
-        onClick={() => onChangeActiveLink && onChangeActiveLink(null)}
+        onClick={() => onChangeActiveLink && onChangeActiveLink("main")}
       />
       {pathItems.map((path, index) => {
         const dValue = calculateDValuePath(index);
@@ -101,3 +101,6 @@ export const StackSvg = ({
     </svg>
   );
 };
+
+export default memo(StackSvg);
+export { type ISVGStackProps };

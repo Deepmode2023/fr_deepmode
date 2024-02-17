@@ -1,8 +1,7 @@
-import { expect } from "@jest/globals";
+import { expect, jest } from "@jest/globals";
 import React from "react";
 import ClientPortal from "@/components/Portal/Portal";
 import { render, waitFor, queryByTestId } from "@testing-library/react";
-
 const testID = { initial: "test_portal_id", after: "after_portal_id" };
 const propsPortal = {
   selector: testID.initial,
@@ -95,4 +94,19 @@ test("Checking for change selector props", () => {
   expect(
     queryByTestId(anotherComponentContainer.container, "portal")
   ).toBeInTheDocument();
+});
+
+test.only("Testing blocked state", async () => {
+  const setState = jest.fn();
+  jest.spyOn(React, "useState").mockImplementation((init) => [init, setState]);
+  const componentContainer = render(<ContainerComponentForPortal />);
+  const componentPortal = render(
+    <ClientPortal show={true} selector={testID.initial}>
+      <div data-testid="portal">Portal Testing</div>
+    </ClientPortal>
+  );
+
+  await waitFor(() => {
+    expect(setState.mock.calls.length).toBe(5);
+  });
 });
