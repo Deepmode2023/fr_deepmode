@@ -1,8 +1,8 @@
-import { AuthType } from "../services/auth";
+import { AuthType, ResponseLoginUserType } from "../services/auth";
 
 export interface IAuthStoreAction {
   changeLoadingStatus: (condition: boolean) => void;
-  changeAuthState: (authState: AuthType) => void;
+  changeAuthState: (authState: ResponseLoginUserType) => void;
 }
 
 export interface IAuthStore extends IAuthStoreAction, AuthType {

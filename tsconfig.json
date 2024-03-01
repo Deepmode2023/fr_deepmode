@@ -19,6 +19,7 @@
       }
     ],
     "paths": {
+      "prismaSettings/*": ["./prisma/*"],
       "@/*": ["./src/*"]
     }
   },

@@ -1,0 +1,24 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "generated/client"
+}
+
+datasource db {
+  provider  = "sqlite"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_DATABASE_URL")
+}
+
+model User {
+  access_token String   @id @unique
+  session      Session?
+}
+
+model Session {
+  id           Int      @id @default(autoincrement())
+  createdAt    DateTime @default(now())
+  namedSession String   @unique
+  expireTime   DateTime
+  user         User     @relation(fields: [userId], references: [access_token])
+  userId       String   @unique
+}

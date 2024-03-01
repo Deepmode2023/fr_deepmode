@@ -4,7 +4,7 @@ import { IAuthStore } from "@/interfaces/zustand/auth";
 import { parseJwt } from "@/utils/jwt";
 import { LOCALSTORAGE_USER_PK } from "@/global.constant";
 
-export const AuthStore = create<IAuthStore>()((set) => ({
+const AuthStore = create<IAuthStore>()((set) => ({
   user: null,
   isAuth: false,
   refresh_token: null,
@@ -31,9 +31,11 @@ export const AuthStore = create<IAuthStore>()((set) => ({
         access_token: authState.access_token,
         refresh_token: authState.refresh_token,
         user: userObj.user,
-        isAuth: Boolean(userObj.user),
+        isAuth: Boolean(userObj?.user),
         isLoading: false,
-        expire_time: new Date(userObj?.exp * 1000).toString(),
+        expire_time: userObj?.exp && new Date(userObj.exp * 1000).toString(),
       };
     }),
 }));
+
+export { AuthStore, type IAuthStore };
