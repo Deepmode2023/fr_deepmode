@@ -1,18 +1,25 @@
-import { NextResponse, type NextRequest } from "next/server";
+import { type NextRequest } from "next/server";
+import { checkTokenHeader, uniqMetaDataFromHeader } from "./utils/headers";
+import { GetSessionServices } from "./services/api/session";
+import { isExpiredTime } from "./utils/time";
 
 export async function middleware(request: NextRequest) {
-  console.log(request.url);
-  // return new Response(null, {
-  //   status: 307,
-  //   headers: {
-  //     Location: "localhost:8001/premanager",
-  //     "Content-Type": "application/x-www-form-urlencoded",
-  //     ...request.headers,
-  //     "previos-url": request.url,
-  //   },
-  // });
+  const previusUrl = request.url;
+  const uniqMetaFromHeader = uniqMetaDataFromHeader(request);
+  const isAdmitToken = checkTokenHeader(request);
 
-  return Response.redirect(request.url + "premanager");
+  if (uniqMetaFromHeader === null || !isAdmitToken.isAuth)
+    return Response.redirect(
+      process.env.ROOT_API_FRONTEND_URL!.concat("/login")
+    );
+
+  const { session } = await GetSessionServices(uniqMetaFromHeader);
+  if (session?.namedSession && isExpiredTime(session.expireTime.toString())) {
+    request.headers.set("authorization", "Bearer ".concat(session.userId));
+    return Response.redirect(previusUrl);
+  }
+
+  return Response.redirect(process.env.ROOT_API_FRONTEND_URL!.concat("/login"));
 }
 
 export const config = {

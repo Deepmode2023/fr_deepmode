@@ -20,15 +20,3 @@ export default async function AuthManager() {
     </div>
   );
 }
-
-async function getSession() {
-  const session = await PrismaInstance.session.findUnique({
-    where: { namedSession: "" },
-  });
-
-  return {
-    session: JSON.parse(JSON.stringify(session)),
-  };
-}
-
-async function GetSession() {}

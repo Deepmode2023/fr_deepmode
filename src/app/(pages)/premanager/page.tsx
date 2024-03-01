@@ -11,7 +11,6 @@ interface AuthManagerProps {
 
 export default async function AuthManager(request: NextRequest) {
   const { session } = await getSession();
-  const data = fetchFromMiddleware();
 
   console.log(request.headers);
 
@@ -21,19 +20,6 @@ export default async function AuthManager(request: NextRequest) {
     </div>
   );
 }
-
-const fetchFromMiddleware = async () => {
-  const response = await fetch("/api/premanager", {
-    method: "POST",
-    body: JSON.stringify({
-      /* Ваши данные */
-    }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  return await response.json();
-};
 
 async function getSession() {
   const session = await PrismaInstance.session.findUnique({
