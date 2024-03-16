@@ -1,7 +1,7 @@
 export const SIZE_ICONS = 17;
 export const COLORS = {
   success: "#42b883",
-  usually: "#6B7280",
+  usually: "currentcolor",
   error: "#f73963",
 };
 

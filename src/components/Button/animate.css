@@ -1,0 +1,20 @@
+.animate_circle {
+  min-width: 20px;
+  min-height: 20px;
+  border: 1px solid currentcolor;
+  border-radius: 100%;
+  filter: blur(2px);
+  opacity: 0.8;
+  position: absolute;
+  z-index: 0;
+  animation-name: circle;
+  animation-duration: 0.4s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes circle {
+  100% {
+    transform: scale(10);
+    border-width: 1px;
+  }
+}

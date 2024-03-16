@@ -1,16 +1,11 @@
 import { ITotalResponse } from "../total.response";
+import { UserType } from "./auth";
 
 //CREATE USER INTERFACE
 
 export interface IDecodeJWT {
   exp: number;
-  user: {
-    email: string;
-    name: string;
-    roles: Array<string>;
-    surname: string;
-    user_id: string;
-  };
+  user: UserType;
 }
 
 export interface IUpdateUserParams {

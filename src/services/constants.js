@@ -1,4 +1,4 @@
-export const SERVICES_POINT = {
+export const SERVICES_ENDPOINT = {
   //AUTH
   POST_TOKEN: "auth/token",
   POST_REFRESH_TOKEN: "auth/refresh",
@@ -18,3 +18,12 @@ export const basic_path =
   process.env.BASIC_API_BACKAND_URL ??
   process.env.NEXT_PUBLIC_BASIC_API_BACKAND_URL ??
   "";
+
+export const local_basic_path =
+  process.env.ROOT_API_FRONTEND_URL ??
+  process.env.NEXT_PUBLIC_ROOT_API_FRONTEND_URL ??
+  "";
+
+export const LOCAL_SERVICES_ENDPOINT = {
+  PREMENAGER: "api/premanager",
+};

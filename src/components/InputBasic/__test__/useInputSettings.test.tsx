@@ -26,6 +26,7 @@ describe("Check correct work hooks useInputSettings", () => {
 
   const params: UseValueType = {
     type: "email",
+    clearEvent: false,
     onValidateInput: onValidInputMock,
   };
 
@@ -83,7 +84,11 @@ describe("Check correct work hooks useInputSettings", () => {
 
   test("Checking the correct color of the display icon with the password type", async () => {
     await waitFor(() => {
-      hookInstance.rerender({ onValidateInput: undefined, type: "password" });
+      hookInstance.rerender({
+        onValidateInput: undefined,
+        type: "password",
+        clearEvent: false,
+      });
     });
 
     expect(hookInstance.result.current.isValid).toBe(false);
@@ -107,7 +112,11 @@ describe("Check correct work hooks useInputSettings", () => {
 
   test("Checking that the icon is displayed correctly with type password", async () => {
     await waitFor(() => {
-      hookInstance.rerender({ onValidateInput: undefined, type: "password" });
+      hookInstance.rerender({
+        onValidateInput: undefined,
+        type: "password",
+        clearEvent: false,
+      });
     });
     const color = hookInstance.result.current.isValid
       ? COLORS.success

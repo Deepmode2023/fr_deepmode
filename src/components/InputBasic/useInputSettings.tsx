@@ -14,6 +14,7 @@ export type UseValueType = {
     type: SPECIAL_VALIDATE
   ) => IStandartValidateValue;
   type: SPECIAL_VALIDATE;
+  clearEvent: boolean;
   onClickIcon?: (params: OnClickIconParamsType) => void;
   icon?: (color: string) => JSX.Element;
 };
@@ -22,6 +23,7 @@ export const useInputSettings = ({
   onValidateInput,
   type,
   onClickIcon,
+  clearEvent,
   icon,
 }: UseValueType) => {
   const [value, setValue] = useState("");
@@ -29,6 +31,10 @@ export const useInputSettings = ({
   const [visiblePassword, setVisisblePassword] = useState(false);
   const [typeInput, setTypeInput] = useState(type);
   const [iconButton, setIconButton] = useState<JSX.Element | null>(null);
+
+  useEffect(() => {
+    if (clearEvent) setValue("");
+  }, [clearEvent]);
 
   const conditionInput = onValidateInput
     ? onValidateInput(value, type)

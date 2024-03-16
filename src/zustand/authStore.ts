@@ -3,8 +3,9 @@ import { ResponseLoginUserType } from "@/interfaces/services/auth";
 import { IAuthStore } from "@/interfaces/zustand/auth";
 import { parseJwt } from "@/utils/jwt";
 import { LOCALSTORAGE_USER_PK } from "@/global.constant";
+import { IDecodeJWT } from "@/interfaces/services/user";
 
-export const AuthStore = create<IAuthStore>()((set) => ({
+const AuthStore = create<IAuthStore>()((set) => ({
   user: null,
   isAuth: false,
   refresh_token: null,
@@ -17,12 +18,14 @@ export const AuthStore = create<IAuthStore>()((set) => ({
     })),
   changeAuthState: (authState: ResponseLoginUserType) =>
     set((state: IAuthStore) => {
-      const userObj = parseJwt(authState.access_token ?? "");
+      const tokenMeta: IDecodeJWT | null = parseJwt(
+        authState.access_token ?? ""
+      );
 
-      if (window && userObj.user) {
+      if (window && tokenMeta?.user) {
         window.localStorage.setItem(
           LOCALSTORAGE_USER_PK,
-          JSON.stringify(userObj)
+          JSON.stringify(tokenMeta.user)
         );
       }
 
@@ -30,10 +33,14 @@ export const AuthStore = create<IAuthStore>()((set) => ({
         ...state,
         access_token: authState.access_token,
         refresh_token: authState.refresh_token,
-        user: userObj.user,
-        isAuth: Boolean(userObj.user),
+        user: tokenMeta?.user ?? null,
+        isAuth: Boolean(tokenMeta?.user),
         isLoading: false,
-        expire_time: new Date(userObj?.exp * 1000).toString(),
+        expire_time: tokenMeta?.exp
+          ? new Date(tokenMeta.exp * 1000).toString()
+          : null,
       };
     }),
 }));
+
+export { AuthStore, type IAuthStore };

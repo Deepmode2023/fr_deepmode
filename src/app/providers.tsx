@@ -1,18 +1,19 @@
 "use client";
 import { ThemeProvider } from "next-themes";
-import { FC, ReactNode } from "react";
+import { PropsWithChildren } from "react";
 import { useEffect, useState } from "react";
+import { BreadcrompsProvider } from "@/components/Breadcromps/context/BreadcropContext";
 
-type ProvidersPropsType = {
-  children: ReactNode;
-};
-
-export const Providers: FC<ProvidersPropsType> = ({ children }) => {
+export const Providers = ({ children }: PropsWithChildren) => {
   const [mount, setMount] = useState(false);
   useEffect(() => {
     setMount(true);
   }, []);
 
   if (!mount) return children;
-  return <ThemeProvider attribute="class">{children}</ThemeProvider>;
+  return (
+    <ThemeProvider attribute="class">
+      <BreadcrompsProvider>{children}</BreadcrompsProvider>
+    </ThemeProvider>
+  );
 };

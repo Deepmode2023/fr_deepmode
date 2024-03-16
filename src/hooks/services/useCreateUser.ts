@@ -11,13 +11,13 @@ import { BodyDetailType } from "@/interfaces/total.response";
 import { IServiceHooksResponse } from "@/interfaces/service.hooks";
 
 export const useCreateUser = (): IServiceHooksResponse<
-  ICreateUserParams,
+  ICreateUserParams | FormData,
   BodyDetailType<ResponseUserType> | null
 > => {
   const [details, setDetails] =
     useState<BodyDetailType<ResponseUserType> | null>(null);
 
-  const callAPI = useCallback((params: ICreateUserParams) => {
+  const callAPI = useCallback((params: ICreateUserParams | FormData) => {
     createUserService(params).then((resolve) => {
       const message = {
         message: resolve.detail[0].msg,

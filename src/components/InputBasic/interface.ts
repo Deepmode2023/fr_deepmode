@@ -21,8 +21,11 @@ export type ValidateSettings = {
 
 export interface IInputBasicProps {
   classname?: InputClassnameType;
+  clearEvent?: boolean;
   placeholder?: string;
+  disabled?: boolean;
   icon?: (color: string) => JSX.Element;
+  name?: string;
   type: SPECIAL_VALIDATE;
   validateSettings?: ValidateSettings;
   onClickIcon?: (params: OnClickIconParamsType) => void;

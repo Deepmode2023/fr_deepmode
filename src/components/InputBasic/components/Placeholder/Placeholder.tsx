@@ -34,7 +34,7 @@ export const Placeholder: FC<IPlaceholderProps> = ({
     validateMessage && message?.length > 0 ? message : placeholder;
 
   return (
-    <div style={{ color }} className="text-xs select-none overflow-hidden">
+    <div style={{ color }} className="text-sm select-none overflow-hidden">
       <AnimatePresence mode="wait">
         {placeholder && (
           <motion.div
