@@ -1,25 +1,17 @@
-import { type NextRequest } from "next/server";
-import { checkTokenHeader, uniqMetaDataFromHeader } from "./utils/headers";
-import { GetSessionServices } from "./services/api/session";
-import { isExpiredTime } from "./utils/time";
+import { NextRequest } from "next/server";
+import MiddlewareAuth from "@/utils/middleware";
 
-export async function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest | Request) {
   const previusUrl = request.url;
-  const uniqMetaFromHeader = uniqMetaDataFromHeader(request);
-  const isAdmitToken = checkTokenHeader(request);
+  const middlewareAuthorization = new MiddlewareAuth(
+    request.headers,
+    previusUrl
+  );
 
-  if (uniqMetaFromHeader === null || !isAdmitToken.isAuth)
-    return Response.redirect(
-      process.env.ROOT_API_FRONTEND_URL!.concat("/login")
-    );
+  middlewareAuthorization.headerCheckControll();
+  await middlewareAuthorization.dbCheckControll();
 
-  const { session } = await GetSessionServices(uniqMetaFromHeader);
-  if (session?.namedSession && isExpiredTime(session.expireTime.toString())) {
-    request.headers.set("authorization", "Bearer ".concat(session.userId));
-    return Response.redirect(previusUrl);
-  }
-
-  return Response.redirect(process.env.ROOT_API_FRONTEND_URL!.concat("/login"));
+  return middlewareAuthorization.redirectWithConditionChecking();
 }
 
 export const config = {

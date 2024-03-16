@@ -2,12 +2,13 @@ import { ReactNode, createContext, useState } from "react";
 import {
   AccordionIsActiveType,
   AccordionChildActiveContextType,
-  RegisterAccordionsContextType,
 } from "@/interfaces/context/accordionContext";
 
 export const AccordionIsActiveContext = createContext<AccordionIsActiveType>({
   isActive: false,
-  setIsActive: (isActive) => console.log(isActive),
+  setIsActive: () => {
+    throw new Error("setIsActive doesnt implement!");
+  },
 });
 
 export const AccordionChildActiveContext =

@@ -14,3 +14,13 @@ export const boundarySSRComponents = (params: Object) => {
 
   return { formDataSSR: formDataBody, boundary };
 };
+
+export const getFormData = (object: Record<string, any>): FormData => {
+  const formData = new FormData();
+
+  for (const [field, value] of Object.entries(object)) {
+    formData.append(field, value);
+  }
+
+  return formData;
+};

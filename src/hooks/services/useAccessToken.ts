@@ -19,22 +19,25 @@ const toastStore = createSelectorHooks(ToastStore);
 const authStore = createSelectorHooks(AuthStore);
 
 export const useAccessToken = (): IServiceHooksResponse<
-  LoginUserParamsType,
+  LoginUserParamsType | FormData,
   AuthType
 > => {
   const [error, setError] = useState<string | null>(null);
+  const [isSuccess, setIsSuccess] = useState(false);
   const { changeLoadingStatus, changeAuthState } = authStore.getState();
   const { addMessage, removeMessage } = toastStore.getState();
   const [decodeJwt, setDecodeJwt] = useState<IDecodeJWT | null>(null);
-  const [tokenResponse, setTokenResponse] = useState<ResponseLoginUserType>();
+  const [tokenResponse, setTokenResponse] =
+    useState<ResponseLoginUserType | null>(null);
 
   const callAPI = useCallback(
-    ({ password, username }: LoginUserParamsType) => {
+    (params: LoginUserParamsType | FormData) => {
       changeLoadingStatus(true);
-      getAccessTokenService({ password, username }).then((response): void => {
+      getAccessTokenService(params).then((response): void => {
         if (response?.access_token) {
+          setIsSuccess(true);
           setTokenResponse(response);
-          setDecodeJwt(parseJwt(response.access_token));
+          setDecodeJwt(parseJwt(response.access_token) as IDecodeJWT);
         }
 
         //TODO ----> CHANGE THIS LOGIC WHEN CREATE NORMAL RESPONSE ACCESS TOKEN
@@ -49,7 +52,7 @@ export const useAccessToken = (): IServiceHooksResponse<
   );
 
   useEffect(() => {
-    if (tokenResponse?.access_token) {
+    if (isSuccess) {
       DisplayToastAdapter(
         {
           condition: "success",
@@ -58,6 +61,7 @@ export const useAccessToken = (): IServiceHooksResponse<
         },
         TIME_DISPLAY_TOAST
       );
+      setIsSuccess(false);
     }
     if (error) {
       DisplayToastAdapter(
@@ -68,16 +72,14 @@ export const useAccessToken = (): IServiceHooksResponse<
         },
         TIME_DISPLAY_TOAST
       );
+
+      setError(null);
     }
-  }, [addMessage, removeMessage, tokenResponse, error]);
+  }, [addMessage, removeMessage, isSuccess, error]);
 
   useEffect(() => {
     if (tokenResponse?.access_token && decodeJwt) {
-      changeAuthState({
-        user: decodeJwt.user,
-        isAuth: true,
-        ...tokenResponse,
-      });
+      changeAuthState(tokenResponse);
     }
   }, [changeLoadingStatus, changeAuthState, tokenResponse, decodeJwt]);
 
@@ -90,7 +92,7 @@ export const useAccessToken = (): IServiceHooksResponse<
         access_token: tokenResponse?.access_token ?? null,
         refresh_token: tokenResponse?.refresh_token ?? null,
         expire_time: decodeJwt?.exp
-          ? new Date(decodeJwt.exp * 1000).toString()
+          ? new Date(Number(decodeJwt.exp)).toString()
           : null,
       },
     }),

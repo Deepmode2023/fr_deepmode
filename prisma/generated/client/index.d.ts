@@ -951,29 +951,47 @@ export namespace Prisma {
   }
 
   export type UserMinAggregateOutputType = {
-    access_token: string | null
+    email: string | null
+    name: string | null
+    roles: string | null
+    updated_account: string | null
   }
 
   export type UserMaxAggregateOutputType = {
-    access_token: string | null
+    email: string | null
+    name: string | null
+    roles: string | null
+    updated_account: string | null
   }
 
   export type UserCountAggregateOutputType = {
-    access_token: number
+    email: number
+    name: number
+    roles: number
+    updated_account: number
     _all: number
   }
 
 
   export type UserMinAggregateInputType = {
-    access_token?: true
+    email?: true
+    name?: true
+    roles?: true
+    updated_account?: true
   }
 
   export type UserMaxAggregateInputType = {
-    access_token?: true
+    email?: true
+    name?: true
+    roles?: true
+    updated_account?: true
   }
 
   export type UserCountAggregateInputType = {
-    access_token?: true
+    email?: true
+    name?: true
+    roles?: true
+    updated_account?: true
     _all?: true
   }
 
@@ -1050,7 +1068,10 @@ export namespace Prisma {
   }
 
   export type UserGroupByOutputType = {
-    access_token: string
+    email: string
+    name: string
+    roles: string
+    updated_account: string
     _count: UserCountAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
@@ -1071,26 +1092,35 @@ export namespace Prisma {
 
 
   export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    access_token?: boolean
-    session?: boolean | User$sessionArgs<ExtArgs>
+    email?: boolean
+    name?: boolean
+    roles?: boolean
+    updated_account?: boolean
+    session_id?: boolean | User$session_idArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
-    access_token?: boolean
+    email?: boolean
+    name?: boolean
+    roles?: boolean
+    updated_account?: boolean
   }
 
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    session?: boolean | User$sessionArgs<ExtArgs>
+    session_id?: boolean | User$session_idArgs<ExtArgs>
   }
 
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      session: Prisma.$SessionPayload<ExtArgs> | null
+      session_id: Prisma.$SessionPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
-      access_token: string
+      email: string
+      name: string
+      roles: string
+      updated_account: string
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -1183,8 +1213,8 @@ export namespace Prisma {
      * // Get first 10 Users
      * const users = await prisma.user.findMany({ take: 10 })
      * 
-     * // Only select the `access_token`
-     * const userWithAccess_tokenOnly = await prisma.user.findMany({ select: { access_token: true } })
+     * // Only select the `email`
+     * const userWithEmailOnly = await prisma.user.findMany({ select: { email: true } })
      * 
     **/
     findMany<T extends UserFindManyArgs<ExtArgs>>(
@@ -1440,7 +1470,7 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    session<T extends User$sessionArgs<ExtArgs> = {}>(args?: Subset<T, User$sessionArgs<ExtArgs>>): Prisma__SessionClient<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+    session_id<T extends User$session_idArgs<ExtArgs> = {}>(args?: Subset<T, User$session_idArgs<ExtArgs>>): Prisma__SessionClient<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1470,7 +1500,10 @@ export namespace Prisma {
    * Fields of the User model
    */ 
   interface UserFieldRefs {
-    readonly access_token: FieldRef<"User", 'String'>
+    readonly email: FieldRef<"User", 'String'>
+    readonly name: FieldRef<"User", 'String'>
+    readonly roles: FieldRef<"User", 'String'>
+    readonly updated_account: FieldRef<"User", 'String'>
   }
     
 
@@ -1771,9 +1804,9 @@ export namespace Prisma {
 
 
   /**
-   * User.session
+   * User.session_id
    */
-  export type User$sessionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$session_idArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Session
      */
@@ -1827,7 +1860,8 @@ export namespace Prisma {
     createdAt: Date | null
     namedSession: string | null
     expireTime: Date | null
-    userId: string | null
+    access_token: string | null
+    userEmail: string | null
   }
 
   export type SessionMaxAggregateOutputType = {
@@ -1835,7 +1869,8 @@ export namespace Prisma {
     createdAt: Date | null
     namedSession: string | null
     expireTime: Date | null
-    userId: string | null
+    access_token: string | null
+    userEmail: string | null
   }
 
   export type SessionCountAggregateOutputType = {
@@ -1843,7 +1878,8 @@ export namespace Prisma {
     createdAt: number
     namedSession: number
     expireTime: number
-    userId: number
+    access_token: number
+    userEmail: number
     _all: number
   }
 
@@ -1861,7 +1897,8 @@ export namespace Prisma {
     createdAt?: true
     namedSession?: true
     expireTime?: true
-    userId?: true
+    access_token?: true
+    userEmail?: true
   }
 
   export type SessionMaxAggregateInputType = {
@@ -1869,7 +1906,8 @@ export namespace Prisma {
     createdAt?: true
     namedSession?: true
     expireTime?: true
-    userId?: true
+    access_token?: true
+    userEmail?: true
   }
 
   export type SessionCountAggregateInputType = {
@@ -1877,7 +1915,8 @@ export namespace Prisma {
     createdAt?: true
     namedSession?: true
     expireTime?: true
-    userId?: true
+    access_token?: true
+    userEmail?: true
     _all?: true
   }
 
@@ -1972,7 +2011,8 @@ export namespace Prisma {
     createdAt: Date
     namedSession: string
     expireTime: Date
-    userId: string
+    access_token: string
+    userEmail: string
     _count: SessionCountAggregateOutputType | null
     _avg: SessionAvgAggregateOutputType | null
     _sum: SessionSumAggregateOutputType | null
@@ -1999,7 +2039,8 @@ export namespace Prisma {
     createdAt?: boolean
     namedSession?: boolean
     expireTime?: boolean
-    userId?: boolean
+    access_token?: boolean
+    userEmail?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["session"]>
 
@@ -2008,7 +2049,8 @@ export namespace Prisma {
     createdAt?: boolean
     namedSession?: boolean
     expireTime?: boolean
-    userId?: boolean
+    access_token?: boolean
+    userEmail?: boolean
   }
 
   export type SessionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2026,7 +2068,8 @@ export namespace Prisma {
       createdAt: Date
       namedSession: string
       expireTime: Date
-      userId: string
+      access_token: string
+      userEmail: string
     }, ExtArgs["result"]["session"]>
     composites: {}
   }
@@ -2410,7 +2453,8 @@ export namespace Prisma {
     readonly createdAt: FieldRef<"Session", 'DateTime'>
     readonly namedSession: FieldRef<"Session", 'String'>
     readonly expireTime: FieldRef<"Session", 'DateTime'>
-    readonly userId: FieldRef<"Session", 'String'>
+    readonly access_token: FieldRef<"Session", 'String'>
+    readonly userEmail: FieldRef<"Session", 'String'>
   }
     
 
@@ -2738,7 +2782,10 @@ export namespace Prisma {
 
 
   export const UserScalarFieldEnum: {
-    access_token: 'access_token'
+    email: 'email',
+    name: 'name',
+    roles: 'roles',
+    updated_account: 'updated_account'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -2749,7 +2796,8 @@ export namespace Prisma {
     createdAt: 'createdAt',
     namedSession: 'namedSession',
     expireTime: 'expireTime',
-    userId: 'userId'
+    access_token: 'access_token',
+    userEmail: 'userEmail'
   };
 
   export type SessionScalarFieldEnum = (typeof SessionScalarFieldEnum)[keyof typeof SessionScalarFieldEnum]
@@ -2803,25 +2851,37 @@ export namespace Prisma {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
-    access_token?: StringFilter<"User"> | string
-    session?: XOR<SessionNullableRelationFilter, SessionWhereInput> | null
+    email?: StringFilter<"User"> | string
+    name?: StringFilter<"User"> | string
+    roles?: StringFilter<"User"> | string
+    updated_account?: StringFilter<"User"> | string
+    session_id?: XOR<SessionNullableRelationFilter, SessionWhereInput> | null
   }
 
   export type UserOrderByWithRelationInput = {
-    access_token?: SortOrder
-    session?: SessionOrderByWithRelationInput
+    email?: SortOrder
+    name?: SortOrder
+    roles?: SortOrder
+    updated_account?: SortOrder
+    session_id?: SessionOrderByWithRelationInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
-    access_token?: string
+    email?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
-    session?: XOR<SessionNullableRelationFilter, SessionWhereInput> | null
-  }, "access_token" | "access_token">
+    name?: StringFilter<"User"> | string
+    roles?: StringFilter<"User"> | string
+    updated_account?: StringFilter<"User"> | string
+    session_id?: XOR<SessionNullableRelationFilter, SessionWhereInput> | null
+  }, "email">
 
   export type UserOrderByWithAggregationInput = {
-    access_token?: SortOrder
+    email?: SortOrder
+    name?: SortOrder
+    roles?: SortOrder
+    updated_account?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
@@ -2831,7 +2891,10 @@ export namespace Prisma {
     AND?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     OR?: UserScalarWhereWithAggregatesInput[]
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
-    access_token?: StringWithAggregatesFilter<"User"> | string
+    email?: StringWithAggregatesFilter<"User"> | string
+    name?: StringWithAggregatesFilter<"User"> | string
+    roles?: StringWithAggregatesFilter<"User"> | string
+    updated_account?: StringWithAggregatesFilter<"User"> | string
   }
 
   export type SessionWhereInput = {
@@ -2842,7 +2905,8 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Session"> | Date | string
     namedSession?: StringFilter<"Session"> | string
     expireTime?: DateTimeFilter<"Session"> | Date | string
-    userId?: StringFilter<"Session"> | string
+    access_token?: StringFilter<"Session"> | string
+    userEmail?: StringFilter<"Session"> | string
     user?: XOR<UserRelationFilter, UserWhereInput>
   }
 
@@ -2851,28 +2915,31 @@ export namespace Prisma {
     createdAt?: SortOrder
     namedSession?: SortOrder
     expireTime?: SortOrder
-    userId?: SortOrder
+    access_token?: SortOrder
+    userEmail?: SortOrder
     user?: UserOrderByWithRelationInput
   }
 
   export type SessionWhereUniqueInput = Prisma.AtLeast<{
     id?: number
     namedSession?: string
-    userId?: string
+    userEmail?: string
     AND?: SessionWhereInput | SessionWhereInput[]
     OR?: SessionWhereInput[]
     NOT?: SessionWhereInput | SessionWhereInput[]
     createdAt?: DateTimeFilter<"Session"> | Date | string
     expireTime?: DateTimeFilter<"Session"> | Date | string
+    access_token?: StringFilter<"Session"> | string
     user?: XOR<UserRelationFilter, UserWhereInput>
-  }, "id" | "namedSession" | "userId">
+  }, "id" | "namedSession" | "userEmail">
 
   export type SessionOrderByWithAggregationInput = {
     id?: SortOrder
     createdAt?: SortOrder
     namedSession?: SortOrder
     expireTime?: SortOrder
-    userId?: SortOrder
+    access_token?: SortOrder
+    userEmail?: SortOrder
     _count?: SessionCountOrderByAggregateInput
     _avg?: SessionAvgOrderByAggregateInput
     _max?: SessionMaxOrderByAggregateInput
@@ -2888,42 +2955,62 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"Session"> | Date | string
     namedSession?: StringWithAggregatesFilter<"Session"> | string
     expireTime?: DateTimeWithAggregatesFilter<"Session"> | Date | string
-    userId?: StringWithAggregatesFilter<"Session"> | string
+    access_token?: StringWithAggregatesFilter<"Session"> | string
+    userEmail?: StringWithAggregatesFilter<"Session"> | string
   }
 
   export type UserCreateInput = {
-    access_token: string
-    session?: SessionCreateNestedOneWithoutUserInput
+    email: string
+    name: string
+    roles: string
+    updated_account: string
+    session_id?: SessionCreateNestedOneWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
-    access_token: string
-    session?: SessionUncheckedCreateNestedOneWithoutUserInput
+    email: string
+    name: string
+    roles: string
+    updated_account: string
+    session_id?: SessionUncheckedCreateNestedOneWithoutUserInput
   }
 
   export type UserUpdateInput = {
-    access_token?: StringFieldUpdateOperationsInput | string
-    session?: SessionUpdateOneWithoutUserNestedInput
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    roles?: StringFieldUpdateOperationsInput | string
+    updated_account?: StringFieldUpdateOperationsInput | string
+    session_id?: SessionUpdateOneWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
-    access_token?: StringFieldUpdateOperationsInput | string
-    session?: SessionUncheckedUpdateOneWithoutUserNestedInput
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    roles?: StringFieldUpdateOperationsInput | string
+    updated_account?: StringFieldUpdateOperationsInput | string
+    session_id?: SessionUncheckedUpdateOneWithoutUserNestedInput
   }
 
   export type UserUpdateManyMutationInput = {
-    access_token?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    roles?: StringFieldUpdateOperationsInput | string
+    updated_account?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserUncheckedUpdateManyInput = {
-    access_token?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    roles?: StringFieldUpdateOperationsInput | string
+    updated_account?: StringFieldUpdateOperationsInput | string
   }
 
   export type SessionCreateInput = {
     createdAt?: Date | string
     namedSession: string
     expireTime: Date | string
-    user: UserCreateNestedOneWithoutSessionInput
+    access_token: string
+    user: UserCreateNestedOneWithoutSession_idInput
   }
 
   export type SessionUncheckedCreateInput = {
@@ -2931,14 +3018,16 @@ export namespace Prisma {
     createdAt?: Date | string
     namedSession: string
     expireTime: Date | string
-    userId: string
+    access_token: string
+    userEmail: string
   }
 
   export type SessionUpdateInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     namedSession?: StringFieldUpdateOperationsInput | string
     expireTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutSessionNestedInput
+    access_token?: StringFieldUpdateOperationsInput | string
+    user?: UserUpdateOneRequiredWithoutSession_idNestedInput
   }
 
   export type SessionUncheckedUpdateInput = {
@@ -2946,13 +3035,15 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     namedSession?: StringFieldUpdateOperationsInput | string
     expireTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: StringFieldUpdateOperationsInput | string
+    access_token?: StringFieldUpdateOperationsInput | string
+    userEmail?: StringFieldUpdateOperationsInput | string
   }
 
   export type SessionUpdateManyMutationInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     namedSession?: StringFieldUpdateOperationsInput | string
     expireTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    access_token?: StringFieldUpdateOperationsInput | string
   }
 
   export type SessionUncheckedUpdateManyInput = {
@@ -2960,7 +3051,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     namedSession?: StringFieldUpdateOperationsInput | string
     expireTime?: DateTimeFieldUpdateOperationsInput | Date | string
-    userId?: StringFieldUpdateOperationsInput | string
+    access_token?: StringFieldUpdateOperationsInput | string
+    userEmail?: StringFieldUpdateOperationsInput | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -2983,15 +3075,24 @@ export namespace Prisma {
   }
 
   export type UserCountOrderByAggregateInput = {
-    access_token?: SortOrder
+    email?: SortOrder
+    name?: SortOrder
+    roles?: SortOrder
+    updated_account?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
-    access_token?: SortOrder
+    email?: SortOrder
+    name?: SortOrder
+    roles?: SortOrder
+    updated_account?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
-    access_token?: SortOrder
+    email?: SortOrder
+    name?: SortOrder
+    roles?: SortOrder
+    updated_account?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -3043,7 +3144,8 @@ export namespace Prisma {
     createdAt?: SortOrder
     namedSession?: SortOrder
     expireTime?: SortOrder
-    userId?: SortOrder
+    access_token?: SortOrder
+    userEmail?: SortOrder
   }
 
   export type SessionAvgOrderByAggregateInput = {
@@ -3055,7 +3157,8 @@ export namespace Prisma {
     createdAt?: SortOrder
     namedSession?: SortOrder
     expireTime?: SortOrder
-    userId?: SortOrder
+    access_token?: SortOrder
+    userEmail?: SortOrder
   }
 
   export type SessionMinOrderByAggregateInput = {
@@ -3063,7 +3166,8 @@ export namespace Prisma {
     createdAt?: SortOrder
     namedSession?: SortOrder
     expireTime?: SortOrder
-    userId?: SortOrder
+    access_token?: SortOrder
+    userEmail?: SortOrder
   }
 
   export type SessionSumOrderByAggregateInput = {
@@ -3136,9 +3240,9 @@ export namespace Prisma {
     update?: XOR<XOR<SessionUpdateToOneWithWhereWithoutUserInput, SessionUpdateWithoutUserInput>, SessionUncheckedUpdateWithoutUserInput>
   }
 
-  export type UserCreateNestedOneWithoutSessionInput = {
-    create?: XOR<UserCreateWithoutSessionInput, UserUncheckedCreateWithoutSessionInput>
-    connectOrCreate?: UserCreateOrConnectWithoutSessionInput
+  export type UserCreateNestedOneWithoutSession_idInput = {
+    create?: XOR<UserCreateWithoutSession_idInput, UserUncheckedCreateWithoutSession_idInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSession_idInput
     connect?: UserWhereUniqueInput
   }
 
@@ -3146,12 +3250,12 @@ export namespace Prisma {
     set?: Date | string
   }
 
-  export type UserUpdateOneRequiredWithoutSessionNestedInput = {
-    create?: XOR<UserCreateWithoutSessionInput, UserUncheckedCreateWithoutSessionInput>
-    connectOrCreate?: UserCreateOrConnectWithoutSessionInput
-    upsert?: UserUpsertWithoutSessionInput
+  export type UserUpdateOneRequiredWithoutSession_idNestedInput = {
+    create?: XOR<UserCreateWithoutSession_idInput, UserUncheckedCreateWithoutSession_idInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSession_idInput
+    upsert?: UserUpsertWithoutSession_idInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSessionInput, UserUpdateWithoutSessionInput>, UserUncheckedUpdateWithoutSessionInput>
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSession_idInput, UserUpdateWithoutSession_idInput>, UserUncheckedUpdateWithoutSession_idInput>
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -3260,6 +3364,7 @@ export namespace Prisma {
     createdAt?: Date | string
     namedSession: string
     expireTime: Date | string
+    access_token: string
   }
 
   export type SessionUncheckedCreateWithoutUserInput = {
@@ -3267,6 +3372,7 @@ export namespace Prisma {
     createdAt?: Date | string
     namedSession: string
     expireTime: Date | string
+    access_token: string
   }
 
   export type SessionCreateOrConnectWithoutUserInput = {
@@ -3289,6 +3395,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     namedSession?: StringFieldUpdateOperationsInput | string
     expireTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    access_token?: StringFieldUpdateOperationsInput | string
   }
 
   export type SessionUncheckedUpdateWithoutUserInput = {
@@ -3296,38 +3403,51 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     namedSession?: StringFieldUpdateOperationsInput | string
     expireTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    access_token?: StringFieldUpdateOperationsInput | string
   }
 
-  export type UserCreateWithoutSessionInput = {
-    access_token: string
+  export type UserCreateWithoutSession_idInput = {
+    email: string
+    name: string
+    roles: string
+    updated_account: string
   }
 
-  export type UserUncheckedCreateWithoutSessionInput = {
-    access_token: string
+  export type UserUncheckedCreateWithoutSession_idInput = {
+    email: string
+    name: string
+    roles: string
+    updated_account: string
   }
 
-  export type UserCreateOrConnectWithoutSessionInput = {
+  export type UserCreateOrConnectWithoutSession_idInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutSessionInput, UserUncheckedCreateWithoutSessionInput>
+    create: XOR<UserCreateWithoutSession_idInput, UserUncheckedCreateWithoutSession_idInput>
   }
 
-  export type UserUpsertWithoutSessionInput = {
-    update: XOR<UserUpdateWithoutSessionInput, UserUncheckedUpdateWithoutSessionInput>
-    create: XOR<UserCreateWithoutSessionInput, UserUncheckedCreateWithoutSessionInput>
+  export type UserUpsertWithoutSession_idInput = {
+    update: XOR<UserUpdateWithoutSession_idInput, UserUncheckedUpdateWithoutSession_idInput>
+    create: XOR<UserCreateWithoutSession_idInput, UserUncheckedCreateWithoutSession_idInput>
     where?: UserWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutSessionInput = {
+  export type UserUpdateToOneWithWhereWithoutSession_idInput = {
     where?: UserWhereInput
-    data: XOR<UserUpdateWithoutSessionInput, UserUncheckedUpdateWithoutSessionInput>
+    data: XOR<UserUpdateWithoutSession_idInput, UserUncheckedUpdateWithoutSession_idInput>
   }
 
-  export type UserUpdateWithoutSessionInput = {
-    access_token?: StringFieldUpdateOperationsInput | string
+  export type UserUpdateWithoutSession_idInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    roles?: StringFieldUpdateOperationsInput | string
+    updated_account?: StringFieldUpdateOperationsInput | string
   }
 
-  export type UserUncheckedUpdateWithoutSessionInput = {
-    access_token?: StringFieldUpdateOperationsInput | string
+  export type UserUncheckedUpdateWithoutSession_idInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    roles?: StringFieldUpdateOperationsInput | string
+    updated_account?: StringFieldUpdateOperationsInput | string
   }
 
 

@@ -1,12 +1,11 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { AuthStore, type IAuthStore } from "@/zustand/authStore";
+import { useEffect, useState } from "react";
+import { AuthStore } from "@/zustand/authStore";
 import { createSelectorHooks } from "auto-zustand-selectors-hook";
-import { LOCALSTORAGE_TOKEN_PK, TIME_EXPIRED_TOKEN } from "@/global.constant";
+import { LOCALSTORAGE_TOKEN_PK } from "@/global.constant";
 import { parseJwt } from "@/utils/jwt";
 import { UserType } from "@/interfaces/services/auth";
-
-import moment from "moment";
+import { IDecodeJWT } from "@/interfaces/services/user";
 
 const authStore = createSelectorHooks(AuthStore);
 
@@ -58,12 +57,12 @@ export const useSession = () => {
         isAuth,
       });
     } else if (storageToken) {
-      const { user = null, exp = null } = parseJwt(storageToken);
-      isAuth = new Date(Number(exp)).getTime() >= Date.now();
+      const tokenMeta: IDecodeJWT | null = parseJwt(storageToken);
+      isAuth = new Date(Number(tokenMeta)).getTime() >= Date.now();
 
       setSession({
-        user,
-        exp: isAuth ? new Date(Number(exp)) : null,
+        user: tokenMeta?.user ?? null,
+        exp: isAuth ? new Date(Number(tokenMeta)) : null,
         isAuth,
       });
 

@@ -5,12 +5,17 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url      = "file:./session.db"
+  url      = env("DIRECT_DATABASE_URL")
 }
 
 model User {
-  access_token String   @id @unique
-  session      Session?
+  email           String   @unique
+  name            String
+  roles           String
+  updated_account String
+  session_id      Session?
+
+  @@map("user")
 }
 
 model Session {
@@ -18,6 +23,10 @@ model Session {
   createdAt    DateTime @default(now())
   namedSession String   @unique
   expireTime   DateTime
-  user         User     @relation(fields: [userId], references: [access_token])
-  userId       String   @unique
+  access_token String
+
+  user      User   @relation(fields: [userEmail], references: [email])
+  userEmail String @unique
+
+  @@map("session")
 }

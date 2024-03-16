@@ -5,8 +5,13 @@ import "./globals.css";
 import { PORTAL_ID } from "@/global.constant";
 import { Providers } from "./providers";
 import { mergeCls } from "@/utils/cls";
+import { Toast } from "@/components/Toast/Toast";
 
-const figtree = Figtree({ weight: "300", style: "normal", subsets: ["latin"] });
+const figtree = Figtree({
+  weight: "variable",
+  style: "normal",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -28,6 +33,7 @@ export default function RootLayout({
       >
         <Providers>
           <div id={PORTAL_ID.TOTAL_PORTAL} />
+          <Toast />
           {children}
         </Providers>
       </body>

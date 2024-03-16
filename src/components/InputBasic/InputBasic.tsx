@@ -15,6 +15,8 @@ const InputBasic: FC<IInputBasicProps> = ({
   onClickIcon,
   type,
   onValidateInput,
+  clearEvent = false,
+  disabled = false,
   validateSettings = { displayIcon: true, displayMessage: true },
 }) => {
   const {
@@ -32,8 +34,10 @@ const InputBasic: FC<IInputBasicProps> = ({
     onClickIcon,
     onValidateInput,
     icon,
+    clearEvent,
     type,
   });
+
   return (
     <div
       className={mergeCls("flex flex-col gap-1 w-full", classname?.container)}
@@ -46,6 +50,7 @@ const InputBasic: FC<IInputBasicProps> = ({
         )}
       >
         <input
+          disabled={disabled}
           type={typeInput}
           onChange={({ target: { value } }) => setValue(value)}
           className={mergeCls(

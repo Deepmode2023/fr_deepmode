@@ -1,5 +1,5 @@
 import { concat_url_path } from "@/utils/url";
-import { SERVICES_POINT } from "./constants";
+import { SERVICES_ENDPOINT } from "./constants";
 import { basic_path } from "./constants";
 import { AuthStore } from "@/zustand/authStore";
 import { ITotalResponse } from "@/interfaces/total.response";
@@ -21,7 +21,7 @@ export async function getSharedPreference(): Promise<
     );
 
   const make_url = concat_url_path(basic_path)(
-    SERVICES_POINT.GET_SHARED_PREFERENCE
+    SERVICES_ENDPOINT.GET_SHARED_PREFERENCE
   );
 
   const resultData = await fetch(make_url, {
@@ -48,7 +48,7 @@ export async function updateSharedPreference({
     );
 
   const make_url = concat_url_path(basic_path)(
-    SERVICES_POINT.PUT_SHARED_PREFERENCE
+    SERVICES_ENDPOINT.PUT_SHARED_PREFERENCE
   );
 
   const resultData = await fetch(make_url, {

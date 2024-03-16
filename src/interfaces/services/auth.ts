@@ -16,7 +16,7 @@ export type UserType = {
   email: string;
   roles: string[];
   create_at?: string;
-  update_account?: string;
+  updated_account: string;
 };
 
 /* For Service type */

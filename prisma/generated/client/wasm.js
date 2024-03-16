@@ -105,7 +105,10 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 });
 
 exports.Prisma.UserScalarFieldEnum = {
-  access_token: 'access_token'
+  email: 'email',
+  name: 'name',
+  roles: 'roles',
+  updated_account: 'updated_account'
 };
 
 exports.Prisma.SessionScalarFieldEnum = {
@@ -113,7 +116,8 @@ exports.Prisma.SessionScalarFieldEnum = {
   createdAt: 'createdAt',
   namedSession: 'namedSession',
   expireTime: 'expireTime',
-  userId: 'userId'
+  access_token: 'access_token',
+  userEmail: 'userEmail'
 };
 
 exports.Prisma.SortOrder = {
