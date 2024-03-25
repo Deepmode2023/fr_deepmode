@@ -81,7 +81,7 @@ function VerticalLinearStepper({ steps }: IVerticalLinearStepper) {
                   ) : null
                 }
               >
-                <div className="flex items-center">
+                {/* <div className="flex items-center">
                   <Typography
                     className={cls(
                       "dark:text-dark-color3 text-light-color1 capitalize ",
@@ -99,7 +99,7 @@ function VerticalLinearStepper({ steps }: IVerticalLinearStepper) {
                       Back
                     </Button>
                   </Box>
-                </div>
+                </div> */}
               </StepLabel>
               <StepContent sx={{ color: "white" }}>
                 <FormControl>

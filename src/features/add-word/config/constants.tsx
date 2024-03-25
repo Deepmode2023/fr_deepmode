@@ -1,8 +1,11 @@
 import { SlugEnum, SlangEnum } from "@/entities";
 import { ICreateWordGraphQlVariables } from "../model/model";
 import { IStandartValidateValue } from "@/shared";
+import { StepType } from "@/shared";
+import { Typography } from "@mui/material";
 
 type InputPropsType = {
+  uniqKey: string;
   isRequired: boolean;
   label: string;
   description: string;
@@ -15,12 +18,14 @@ export const WORD_INPUTS: Record<
   InputPropsType
 > = {
   name: {
+    uniqKey: "name_input",
     isRequired: true,
     label: "Name",
     description: "Enter the name of the word in the infinitive.",
     isValid: false,
   },
   partOfSpeach: {
+    uniqKey: "part_of_speach_input",
     isRequired: true,
     label: "Part of speach",
     description: "Enter the part of speech corresponding to these options.",
@@ -30,12 +35,14 @@ export const WORD_INPUTS: Record<
     isValid: true,
   },
   translate: {
+    uniqKey: "translate_input",
     isRequired: true,
     label: "Translate",
     description: "Enter a translation of this word.",
     isValid: false,
   },
   example: {
+    uniqKey: "example_input",
     isRequired: false,
     label: "Example",
     description:
@@ -43,6 +50,7 @@ export const WORD_INPUTS: Record<
     isValid: false,
   },
   slug: {
+    uniqKey: "slug_input",
     isRequired: true,
     label: "Slug",
     description:
@@ -50,6 +58,7 @@ export const WORD_INPUTS: Record<
     isValid: false,
   },
   slang: {
+    uniqKey: "slang_input",
     isRequired: false,
     label: "Slang",
     description:
@@ -60,6 +69,7 @@ export const WORD_INPUTS: Record<
     },
   },
   synonym: {
+    uniqKey: "synonym_input",
     isRequired: false,
     label: "Synonym",
     description:
@@ -67,6 +77,7 @@ export const WORD_INPUTS: Record<
     isValid: false,
   },
   imageUrl: {
+    uniqKey: "image_url_input",
     isRequired: false,
     label: "Image",
     description:
@@ -74,3 +85,21 @@ export const WORD_INPUTS: Record<
     isValid: false,
   },
 };
+
+export const StepsWordInputs: StepType[] = Object.entries(WORD_INPUTS).map(
+  ([input, { uniqKey, ...propsInput }], index) => {
+    console.log(input, { propsInput });
+    return {
+      uniqKey,
+      StepContent: <div className="text-current">Content</div>,
+      StepLabel: (
+        <Typography noWrap variant="h6" className="text-white">
+          {propsInput.label}
+        </Typography>
+      ),
+      error: index === 2,
+      isVisibleAction: true,
+      description: propsInput.description,
+    };
+  }
+);

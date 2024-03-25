@@ -9,6 +9,7 @@ import { IDecodeJWT } from "./lib/utils/jwt";
 import { parseJwt } from "./lib/utils/jwt";
 import { cls } from "./lib/utils/cls";
 import { AddButton, ConditionType } from "./ui/add-button";
+import { useStepper, StepType } from "./lib/hooks/use-stepper";
 
 import {
   PORTAL_ID,
@@ -29,11 +30,12 @@ export {
   TIME_EXPIRED_TOKEN,
 };
 /* FUNCTION */
-export { StandartValidate, parseJwt, cls, AddButton };
+export { StandartValidate, parseJwt, cls, AddButton, useStepper };
 export type {
   IStandartValidateValue,
   SPECIAL_VALIDATE,
   UserType,
   IDecodeJWT,
   ConditionType,
+  StepType,
 };
