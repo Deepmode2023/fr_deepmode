@@ -1,14 +1,13 @@
-import { ThemeColor } from "./../../interfaces/services/sharedPreference";
 import { useState, useCallback, useMemo, useEffect } from "react";
 import {
   getSharedPreference,
   updateSharedPreference,
 } from "@/services/api.sharedPreference";
-import { DisplayToastAdapter } from "@/zustand/toastStore";
+import { DisplayToastAdapter } from "@/entities";
 import {
   LOCALSTORAGE_SHARED_PREFERENCE_PK,
   TIME_DISPLAY_TOAST,
-} from "@/global.constant";
+} from "@/shared";
 import { BodyDetailType } from "@/interfaces/total.response";
 import { IServiceHooksResponse } from "@/interfaces/service.hooks";
 import {

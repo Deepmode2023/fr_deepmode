@@ -4,8 +4,8 @@ import {
   IUpdateUserParams,
   ResponseUserType,
 } from "@/interfaces/services/user";
-import { DisplayToastAdapter } from "@/zustand/toastStore";
-import { TIME_DISPLAY_TOAST } from "@/global.constant";
+import { DisplayToastAdapter } from "@/entities";
+import { TIME_DISPLAY_TOAST } from "@/shared";
 import { BodyDetailType } from "@/interfaces/total.response";
 import { IServiceHooksResponse } from "@/interfaces/service.hooks";
 

@@ -14,6 +14,13 @@
   "dependencies": {
     "@apollo/client": "^3.8.0-rc.2",
     "@apollo/experimental-nextjs-app-support": "^0.5.2",
+    "@babel/runtime": "^7.24.1",
+    "@emotion/cache": "^11.11.0",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.15.14",
+    "@mui/material": "^5.15.14",
+    "@mui/material-nextjs": "^5.15.11",
     "@prisma/client": "^5.10.2",
     "@prisma/extension-accelerate": "^1.0.0",
     "auto-zustand-selectors-hook": "^2.0.0",

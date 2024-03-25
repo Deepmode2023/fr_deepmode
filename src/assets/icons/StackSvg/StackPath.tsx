@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { mergeCls } from "@/utils/cls";
+import { cls } from "@/shared";
 
 export type StackPathPropsType = {
   dValue: string;
@@ -25,7 +25,7 @@ export const StackPath: React.FC<StackPathPropsType> = ({
     <motion.path
       {...animateProps}
       onClick={() => onClickHandler && onClickHandler(keyName)}
-      className={mergeCls(classes, fill)}
+      className={cls(classes, fill)}
       d={dValue}
       strokeWidth={strokeWidth}
       strokeLinecap="round"

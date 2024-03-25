@@ -22,7 +22,7 @@ model Session {
   id           Int      @id @default(autoincrement())
   createdAt    DateTime @default(now())
   namedSession String   @unique
-  expireTime   DateTime
+  expireTime   String
   access_token String
 
   user      User   @relation(fields: [userEmail], references: [email])

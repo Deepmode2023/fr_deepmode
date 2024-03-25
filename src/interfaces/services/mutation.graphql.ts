@@ -17,17 +17,6 @@ export enum SlangEnum {
   PL = "PL",
 }
 
-export interface ICreateWordGraphQlVariables {
-  name: string;
-  partOfSpeach: PartOfSpeachEnum;
-  translate: string;
-  slug: string;
-  example?: string;
-  slang?: SlangEnum;
-  synonym: Array<string>;
-  imageUrl?: string;
-}
-
 export interface IUpdateWordGraphQlVariables {
   id: number;
   name?: string;

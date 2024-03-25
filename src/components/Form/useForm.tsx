@@ -8,7 +8,7 @@ import {
 } from "react";
 import { IFormProps } from "./Form";
 import { InputWithLabel } from "../InputBasic/InputWithLabel";
-import { StandartValidate } from "@/utils/validateInput";
+import { StandartValidate } from "@/shared";
 
 type inputStateValueType = { value: string; isValidate: boolean };
 type inputStateType = Record<string, inputStateValueType>;

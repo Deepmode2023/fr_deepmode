@@ -4,7 +4,7 @@ import { UserType } from "./auth";
 //CREATE USER INTERFACE
 
 export interface IDecodeJWT {
-  exp: number;
+  exp: string;
   user: UserType;
 }
 

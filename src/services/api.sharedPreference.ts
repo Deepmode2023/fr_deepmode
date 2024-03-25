@@ -8,7 +8,7 @@ import {
   IChangeSharedPreferenceParams,
 } from "@/interfaces/services/sharedPreference";
 import queryString from "query-string";
-import { LOCALSTORAGE_TOKEN_PK } from "@/global.constant";
+import { LOCALSTORAGE_TOKEN_PK } from "@/shared";
 
 export async function getSharedPreference(): Promise<
   ITotalResponse<ISharedPreferenceResponse>

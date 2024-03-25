@@ -1,5 +1,5 @@
 "use client";
-import { mergeCls } from "@/utils/cls";
+import { cls } from "@/shared";
 import { FC } from "react";
 import { IInputBasicProps } from "./interface";
 import { Icon } from "./components/Icon/Icon";
@@ -39,12 +39,10 @@ const InputBasic: FC<IInputBasicProps> = ({
   });
 
   return (
-    <div
-      className={mergeCls("flex flex-col gap-1 w-full", classname?.container)}
-    >
+    <div className={cls("flex flex-col gap-1 w-full", classname?.container)}>
       <div
         style={{ borderColor: color }}
-        className={mergeCls(
+        className={cls(
           "flex border-b-2 gap-1 items-center",
           classname?.inputContainer
         )}
@@ -53,7 +51,7 @@ const InputBasic: FC<IInputBasicProps> = ({
           disabled={disabled}
           type={typeInput}
           onChange={({ target: { value } }) => setValue(value)}
-          className={mergeCls(
+          className={cls(
             "w-full bg-transparent outline-none text-gray-700 ",
             classname?.input
           )}

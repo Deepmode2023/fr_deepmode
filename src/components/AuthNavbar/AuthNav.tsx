@@ -6,7 +6,7 @@ import Demo from "@/assets/demo.jpeg";
 import { createSelectorHooks } from "auto-zustand-selectors-hook";
 import { NavbarStore } from "@/zustand/navbarStore";
 import { StackSvg } from "@/assets/icons";
-import { AddWordButton } from "@/components/AuthNavbar/AddWordButton";
+import { AddWordButton } from "@/features";
 import { AuthSubLinkProperty } from "./constants";
 import { AuthAssideStore } from "@/zustand/authAssideStore";
 import { dialogs } from "./dialogs";

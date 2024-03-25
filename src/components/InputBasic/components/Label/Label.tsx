@@ -1,5 +1,5 @@
 import React from "react";
-import { mergeCls } from "@/utils/cls";
+import { cls } from "@/shared";
 import { ID_TESTING } from "../../constants";
 
 export type LableType = {
@@ -8,7 +8,7 @@ export type LableType = {
 };
 
 export const Label: React.FC<LableType> = ({ children, isUpper = true }) => {
-  const classes = mergeCls(
+  const classes = cls(
     isUpper && "uppercase",
     "text-gray-500 text-xs overflow-ellipsis overflow-hidden whitespace-nowrap"
   );

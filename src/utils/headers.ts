@@ -11,7 +11,7 @@ export const uniqMetaDataFromHeader = (header: Headers): string | null => {
     const metaItem = header.get(meta);
     if (metaItem === null || acc === null) return null;
     return acc
-      .concat(metaItem.replace(/[\s/]/g, ""))
+      .concat(metaItem.replace(/[\s,.;!\(\)/]/g, "").toLowerCase())
       .concat(String(process.env.SECRET_META_KEY));
   }, "" as string | null);
 };

@@ -1,7 +1,6 @@
 "use client";
 import { ThemeProvider } from "next-themes";
-import { PropsWithChildren } from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, PropsWithChildren } from "react";
 import { BreadcrompsProvider } from "@/components/Breadcromps/context/BreadcropContext";
 
 export const Providers = ({ children }: PropsWithChildren) => {

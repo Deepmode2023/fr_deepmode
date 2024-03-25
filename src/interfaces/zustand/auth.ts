@@ -1,4 +1,5 @@
-import { AuthType, ResponseLoginUserType } from "../services/auth";
+import { ResponseLoginUserType } from "../services/auth";
+import { AuthType } from "@/entities";
 
 export interface IAuthStoreAction {
   changeLoadingStatus: (condition: boolean) => void;

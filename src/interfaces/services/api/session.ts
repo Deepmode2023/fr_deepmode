@@ -6,7 +6,6 @@ export type ResponseGetSessionServicesType = {
 
 export interface ICreateSessionServices {
   access_token: string;
-  expireTime: Date;
 }
 
 export type ResponseCreateSessionServicesType = {

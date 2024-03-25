@@ -1,9 +1,7 @@
 import { create } from "zustand";
 import { ResponseLoginUserType } from "@/interfaces/services/auth";
 import { IAuthStore } from "@/interfaces/zustand/auth";
-import { parseJwt } from "@/utils/jwt";
-import { LOCALSTORAGE_USER_PK } from "@/global.constant";
-import { IDecodeJWT } from "@/interfaces/services/user";
+import { LOCALSTORAGE_USER_PK, IDecodeJWT, parseJwt } from "@/shared";
 
 const AuthStore = create<IAuthStore>()((set) => ({
   user: null,
@@ -36,9 +34,7 @@ const AuthStore = create<IAuthStore>()((set) => ({
         user: tokenMeta?.user ?? null,
         isAuth: Boolean(tokenMeta?.user),
         isLoading: false,
-        expire_time: tokenMeta?.exp
-          ? new Date(tokenMeta.exp * 1000).toString()
-          : null,
+        expire_time: tokenMeta?.exp ? tokenMeta.exp : null,
       };
     }),
 }));

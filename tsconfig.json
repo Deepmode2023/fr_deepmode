@@ -35,7 +35,10 @@
     "src/utils/bounce.js",
     "src/components/AuthNavbar/constants.js",
     "src/test/helpers/render.js",
-    "src/components/AuthNavbar/dialogs/index.js"
+    "src/components/AuthNavbar/dialogs/index.js",
+    "src/features/auth-navbar/ui/auth-navbar-drawer.tsc",
+    "src/shared/config/global-constant.js",
+    "src/features/toast/ui/toast.tsч"
   ],
   "exclude": ["node_modules"]
 }

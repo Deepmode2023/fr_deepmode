@@ -1,10 +1,10 @@
 import { BodyDetailType } from "../../interfaces/total.response";
 import { useCallback, useMemo, useState } from "react";
-import { DisplayToastAdapter } from "@/zustand/toastStore";
+import { DisplayToastAdapter } from "@/entities";
 import { createSelectorHooks } from "auto-zustand-selectors-hook";
 import { getRefreshTokenService } from "@/services/api.auth";
 import { ResponseLoginUserType } from "@/interfaces/services/auth";
-import { TIME_DISPLAY_TOAST } from "@/global.constant";
+import { TIME_DISPLAY_TOAST } from "@/shared";
 import { AuthStore } from "@/zustand/authStore";
 import { IServiceHooksResponse } from "@/interfaces/service.hooks";
 

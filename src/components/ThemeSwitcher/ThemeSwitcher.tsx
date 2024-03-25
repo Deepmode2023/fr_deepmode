@@ -2,7 +2,7 @@
 import { useTheme } from "next-themes";
 import Switcher from "../Switcher/Switcher";
 import { useLayoutEffect, FC } from "react";
-import { LOCALSTORAGE_SHARED_PREFERENCE_PK } from "@/global.constant";
+import { LOCALSTORAGE_SHARED_PREFERENCE_PK } from "@/shared";
 import { SharedPreferenceStore } from "@/zustand/sharedPreference";
 import { ClassesSwitcherType } from "@/interfaces/components/switcher";
 import { ThemeColor } from "@/interfaces/services/sharedPreference";
