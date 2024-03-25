@@ -1,7 +1,7 @@
 import { ApolloLink } from "@apollo/client";
 import { AuthStore } from "@/zustand/authStore";
 import { createSelectorHooks } from "auto-zustand-selectors-hook";
-import { LOCALSTORAGE_USER_PK } from "@/global.constant";
+import { LOCALSTORAGE_USER_PK } from "@/shared";
 
 const authStore = createSelectorHooks(AuthStore);
 

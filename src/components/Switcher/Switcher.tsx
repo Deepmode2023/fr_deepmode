@@ -1,6 +1,6 @@
 import React, { useLayoutEffect, useState } from "react";
 import { ISwitcherBasicProps } from "@/interfaces/components/switcher";
-import { mergeCls } from "@/utils/cls";
+import { cls } from "@/shared";
 import { Roboto_Condensed } from "next/font/google";
 import { motion } from "framer-motion";
 import { variants, rightSwitcher, leftSwitcher } from "./animate";
@@ -23,14 +23,14 @@ const SwitcherBasic: React.FC<ISwitcherBasicProps> = ({
   return (
     <div
       style={{ width }}
-      className={mergeCls(
+      className={cls(
         fontRoboto.className,
         "rounded-full min-h-[50px] uppercase relative flex items-center justify-between p-[7px] dark:shadow-sm dark:shadow-white shadow-sm",
         classes?.container
       )}
     >
       <div
-        className={mergeCls("cursor-pointer select-none")}
+        className={cls("cursor-pointer select-none")}
         onClick={() => {
           onSwitchClick(value.left.key);
           setSwitcher(!switcher);
@@ -52,7 +52,7 @@ const SwitcherBasic: React.FC<ISwitcherBasicProps> = ({
         variants={variants(width)}
         transition={{ duration: 0.5 }}
         layout
-        className={mergeCls(
+        className={cls(
           `absolute w-[${
             width / 2
           }px] overflow-hidden h-[30px] bg-slate-300 text-black dark:bg-white dark:text-black rounded-full`,

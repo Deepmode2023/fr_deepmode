@@ -1,9 +1,7 @@
 import React from "react";
-import { mergeCls } from "@/utils/cls";
-import { PORTAL_ID } from "@/global.constant";
+import { cls } from "@/shared";
+import { PORTAL_ID } from "@/shared";
 import { LAYOUT_GRID } from "./constants";
-
-import { AuthAssideDialog } from "./AuthAssideDialog";
 
 export interface ILayoutProps {
   height?: number;
@@ -22,15 +20,14 @@ export const Layout: React.FC<ILayoutProps> = ({
   AuthNavbarAsside,
   Navbar,
 }) => {
-  const dialogContent = "";
   return (
     <main
       style={{ height: height ?? "100%" }}
-      className={mergeCls("w-full grid", LAYOUT_GRID.DESC.main)}
+      className={cls("w-full grid", LAYOUT_GRID.DESC.main)}
     >
       <aside
         id={PORTAL_ID.LAYOUT_PORTAL.NAVBAR}
-        className={mergeCls(
+        className={cls(
           LAYOUT_GRID.DESC.navbar,
           isDev && "border-2 border-orange-700"
         )}
@@ -39,22 +36,19 @@ export const Layout: React.FC<ILayoutProps> = ({
       </aside>
       <article
         id={PORTAL_ID.LAYOUT_PORTAL.AUTH_NAVBAR}
-        className={mergeCls(
+        className={cls(
           LAYOUT_GRID.DESC.authNavbar,
           isDev && "border-2 border-red-600"
         )}
       >
         {AuthNavbar}
       </article>
-      <aside className={mergeCls(LAYOUT_GRID.DESC.authNavbarAsside, "z-20")}>
-        <AuthAssideDialog />
-        <div className="sticky top-[105px] group-auth-asside">
-          {AuthNavbarAsside}
-        </div>
+      <aside className={cls(LAYOUT_GRID.DESC.authNavbarAsside)}>
+        {AuthNavbarAsside}
       </aside>
       <article
         id={PORTAL_ID.LAYOUT_PORTAL.INFO_CONTENT}
-        className={mergeCls(
+        className={cls(
           LAYOUT_GRID.DESC.content,
           isDev && "border-2 border-green-400"
         )}

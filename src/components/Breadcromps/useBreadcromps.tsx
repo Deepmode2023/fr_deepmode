@@ -12,7 +12,7 @@ import {
   SettingsCursorStateType,
   ActiveBreadcrompStateType,
 } from "@/interfaces/components/breadcromps";
-import { mergeCls } from "@/utils/cls";
+import { cls } from "@/shared";
 import { BreadcrompsContext } from "./context/BreadcropContext";
 
 export const useBreadcromps = ({
@@ -75,7 +75,7 @@ export const useBreadcromps = ({
               };
             }
           }}
-          className={mergeCls(
+          className={cls(
             "px-8 min-h-10 flex items-center cursor-pointer w-auto",
             isActive && "dark:bg-dark-color3 bg-light-color1"
           )}

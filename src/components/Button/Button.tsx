@@ -1,5 +1,5 @@
 "use client";
-import { mergeCls } from "@/utils/cls";
+import { cls } from "@/shared";
 import { useButtonEffect } from "./useButtonEffect";
 import { IButtonBasicProps } from "@/interfaces/components/button";
 
@@ -16,7 +16,7 @@ const ButtonBasic = ({
     <button
       {...props}
       ref={buttonRef}
-      className={mergeCls(
+      className={cls(
         "overflow-hidden relative drop-shadow-[3px_3px_4px_black]",
         className
       )}
@@ -27,10 +27,7 @@ const ButtonBasic = ({
     >
       <div
         style={{ ...settings }}
-        className={mergeCls(
-          "absolute",
-          Boolean(settings.top) && "animate_circle"
-        )}
+        className={cls("absolute", Boolean(settings.top) && "animate_circle")}
       />
       {children}
     </button>

@@ -2,9 +2,9 @@ import { renderHook, RenderHookResult, waitFor } from "@testing-library/react";
 import {
   IStandartValidateValue,
   SPECIAL_VALIDATE,
-} from "@/interfaces/validate";
+  StandartValidate,
+} from "@/shared";
 import { expect, jest } from "@jest/globals";
-import { StandartValidate } from "@/utils/validateInput";
 import { useInputSettings, UseValueType } from "../useInputSettings";
 import { EyeSvg, CloseEyeSvg } from "@/assets/icons";
 import { COLORS, SIZE_ICONS } from "../constants";

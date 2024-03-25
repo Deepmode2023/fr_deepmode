@@ -2,7 +2,7 @@ import { IButtonWithLoader } from "@/interfaces/components/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { Loader } from "@/components";
 import ButtonBasic from "./Button";
-import { mergeCls } from "@/utils/cls";
+import { cls } from "@/shared";
 
 const ButtonWithLoader = ({
   isLoading,
@@ -20,7 +20,7 @@ const ButtonWithLoader = ({
   >
     <div className="flex items-center justify-center truncate">
       <div
-        className={mergeCls(
+        className={cls(
           "uppercase truncate",
           Boolean(isLoading) && "border-r-2 pr-4 border-[currentcolor]"
         )}

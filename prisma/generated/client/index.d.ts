@@ -1859,7 +1859,7 @@ export namespace Prisma {
     id: number | null
     createdAt: Date | null
     namedSession: string | null
-    expireTime: Date | null
+    expireTime: string | null
     access_token: string | null
     userEmail: string | null
   }
@@ -1868,7 +1868,7 @@ export namespace Prisma {
     id: number | null
     createdAt: Date | null
     namedSession: string | null
-    expireTime: Date | null
+    expireTime: string | null
     access_token: string | null
     userEmail: string | null
   }
@@ -2010,7 +2010,7 @@ export namespace Prisma {
     id: number
     createdAt: Date
     namedSession: string
-    expireTime: Date
+    expireTime: string
     access_token: string
     userEmail: string
     _count: SessionCountAggregateOutputType | null
@@ -2067,7 +2067,7 @@ export namespace Prisma {
       id: number
       createdAt: Date
       namedSession: string
-      expireTime: Date
+      expireTime: string
       access_token: string
       userEmail: string
     }, ExtArgs["result"]["session"]>
@@ -2452,7 +2452,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Session", 'Int'>
     readonly createdAt: FieldRef<"Session", 'DateTime'>
     readonly namedSession: FieldRef<"Session", 'String'>
-    readonly expireTime: FieldRef<"Session", 'DateTime'>
+    readonly expireTime: FieldRef<"Session", 'String'>
     readonly access_token: FieldRef<"Session", 'String'>
     readonly userEmail: FieldRef<"Session", 'String'>
   }
@@ -2904,7 +2904,7 @@ export namespace Prisma {
     id?: IntFilter<"Session"> | number
     createdAt?: DateTimeFilter<"Session"> | Date | string
     namedSession?: StringFilter<"Session"> | string
-    expireTime?: DateTimeFilter<"Session"> | Date | string
+    expireTime?: StringFilter<"Session"> | string
     access_token?: StringFilter<"Session"> | string
     userEmail?: StringFilter<"Session"> | string
     user?: XOR<UserRelationFilter, UserWhereInput>
@@ -2928,7 +2928,7 @@ export namespace Prisma {
     OR?: SessionWhereInput[]
     NOT?: SessionWhereInput | SessionWhereInput[]
     createdAt?: DateTimeFilter<"Session"> | Date | string
-    expireTime?: DateTimeFilter<"Session"> | Date | string
+    expireTime?: StringFilter<"Session"> | string
     access_token?: StringFilter<"Session"> | string
     user?: XOR<UserRelationFilter, UserWhereInput>
   }, "id" | "namedSession" | "userEmail">
@@ -2954,7 +2954,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Session"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Session"> | Date | string
     namedSession?: StringWithAggregatesFilter<"Session"> | string
-    expireTime?: DateTimeWithAggregatesFilter<"Session"> | Date | string
+    expireTime?: StringWithAggregatesFilter<"Session"> | string
     access_token?: StringWithAggregatesFilter<"Session"> | string
     userEmail?: StringWithAggregatesFilter<"Session"> | string
   }
@@ -3008,7 +3008,7 @@ export namespace Prisma {
   export type SessionCreateInput = {
     createdAt?: Date | string
     namedSession: string
-    expireTime: Date | string
+    expireTime: string
     access_token: string
     user: UserCreateNestedOneWithoutSession_idInput
   }
@@ -3017,7 +3017,7 @@ export namespace Prisma {
     id?: number
     createdAt?: Date | string
     namedSession: string
-    expireTime: Date | string
+    expireTime: string
     access_token: string
     userEmail: string
   }
@@ -3025,7 +3025,7 @@ export namespace Prisma {
   export type SessionUpdateInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     namedSession?: StringFieldUpdateOperationsInput | string
-    expireTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    expireTime?: StringFieldUpdateOperationsInput | string
     access_token?: StringFieldUpdateOperationsInput | string
     user?: UserUpdateOneRequiredWithoutSession_idNestedInput
   }
@@ -3034,7 +3034,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     namedSession?: StringFieldUpdateOperationsInput | string
-    expireTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    expireTime?: StringFieldUpdateOperationsInput | string
     access_token?: StringFieldUpdateOperationsInput | string
     userEmail?: StringFieldUpdateOperationsInput | string
   }
@@ -3042,7 +3042,7 @@ export namespace Prisma {
   export type SessionUpdateManyMutationInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     namedSession?: StringFieldUpdateOperationsInput | string
-    expireTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    expireTime?: StringFieldUpdateOperationsInput | string
     access_token?: StringFieldUpdateOperationsInput | string
   }
 
@@ -3050,7 +3050,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     namedSession?: StringFieldUpdateOperationsInput | string
-    expireTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    expireTime?: StringFieldUpdateOperationsInput | string
     access_token?: StringFieldUpdateOperationsInput | string
     userEmail?: StringFieldUpdateOperationsInput | string
   }
@@ -3363,7 +3363,7 @@ export namespace Prisma {
   export type SessionCreateWithoutUserInput = {
     createdAt?: Date | string
     namedSession: string
-    expireTime: Date | string
+    expireTime: string
     access_token: string
   }
 
@@ -3371,7 +3371,7 @@ export namespace Prisma {
     id?: number
     createdAt?: Date | string
     namedSession: string
-    expireTime: Date | string
+    expireTime: string
     access_token: string
   }
 
@@ -3394,7 +3394,7 @@ export namespace Prisma {
   export type SessionUpdateWithoutUserInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     namedSession?: StringFieldUpdateOperationsInput | string
-    expireTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    expireTime?: StringFieldUpdateOperationsInput | string
     access_token?: StringFieldUpdateOperationsInput | string
   }
 
@@ -3402,7 +3402,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     namedSession?: StringFieldUpdateOperationsInput | string
-    expireTime?: DateTimeFieldUpdateOperationsInput | Date | string
+    expireTime?: StringFieldUpdateOperationsInput | string
     access_token?: StringFieldUpdateOperationsInput | string
   }
 

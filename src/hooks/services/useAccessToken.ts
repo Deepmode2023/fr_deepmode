@@ -1,19 +1,18 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { IDecodeJWT } from "@/interfaces/services/user";
 import { getAccessTokenService } from "@/services/api.auth";
 import {
   LoginUserParamsType,
   ResponseLoginUserType,
 } from "@/interfaces/services/auth";
-import { AuthType } from "@/interfaces/services/auth";
+import { AuthType } from "@/entities";
 import { IServiceHooksResponse } from "@/interfaces/service.hooks";
-import { TIME_DISPLAY_TOAST } from "@/global.constant";
+import { TIME_DISPLAY_TOAST, IDecodeJWT } from "@/shared";
 
 import { parseJwt } from "@/utils/jwt";
 
 import { createSelectorHooks } from "auto-zustand-selectors-hook";
 import { AuthStore } from "@/zustand/authStore";
-import { ToastStore, DisplayToastAdapter } from "@/zustand/toastStore";
+import { ToastStore, DisplayToastAdapter } from "@/entities";
 
 const toastStore = createSelectorHooks(ToastStore);
 const authStore = createSelectorHooks(AuthStore);
@@ -91,9 +90,7 @@ export const useAccessToken = (): IServiceHooksResponse<
         isAuth: Boolean(decodeJwt?.user) ?? false,
         access_token: tokenResponse?.access_token ?? null,
         refresh_token: tokenResponse?.refresh_token ?? null,
-        expire_time: decodeJwt?.exp
-          ? new Date(Number(decodeJwt.exp)).toString()
-          : null,
+        expire_time: decodeJwt?.exp ? decodeJwt.exp : null,
       },
     }),
     [tokenResponse, decodeJwt, callAPI]
