@@ -1,7 +1,7 @@
 "use client";
 import React, { useMemo } from "react";
 import { AddButton } from "@/shared";
-import { useAssideStore } from "@/entities";
+import { useAssideStore } from "@/entities/auth";
 import { StepperWordContent } from "./stepper-word-content";
 import { FormWordContent } from "./form-word-content";
 import { Typography } from "@mui/material";

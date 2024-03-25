@@ -1,6 +1,6 @@
 import { BodyDetailType } from "../../interfaces/total.response";
 import { useCallback, useMemo, useState } from "react";
-import { DisplayToastAdapter } from "@/entities";
+import { DisplayToastAdapter } from "@/entities/toast";
 import { createSelectorHooks } from "auto-zustand-selectors-hook";
 import { getRefreshTokenService } from "@/services/api.auth";
 import { ResponseLoginUserType } from "@/interfaces/services/auth";

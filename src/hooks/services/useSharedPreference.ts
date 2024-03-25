@@ -3,7 +3,7 @@ import {
   getSharedPreference,
   updateSharedPreference,
 } from "@/services/api.sharedPreference";
-import { DisplayToastAdapter } from "@/entities";
+import { DisplayToastAdapter } from "@/entities/toast";
 import {
   LOCALSTORAGE_SHARED_PREFERENCE_PK,
   TIME_DISPLAY_TOAST,

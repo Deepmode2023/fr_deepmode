@@ -1,7 +1,7 @@
 import { Navbar } from "@/components/Navbar/Navbar";
 import { Layout } from "@/components/Layout/Layout";
 import { AuthNavigation } from "@/components/AuthNavbar/AuthNav";
-import { AuthAssideDrawer } from "@/features";
+import { AuthAssideDrawer } from "@/features/auth-navbar";
 import { PropsWithChildren } from "react";
 
 export default function AuthorizationGroupLayout({

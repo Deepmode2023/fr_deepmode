@@ -1,5 +1,5 @@
 "use client";
-import { ToastStore } from "@/entities";
+import { ToastStore } from "@/entities/toast";
 import { createSelectorHooks } from "auto-zustand-selectors-hook";
 
 import Alert from "@mui/material/Alert";

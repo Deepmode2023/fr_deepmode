@@ -1,4 +1,4 @@
-import { SlugEnum, SlangEnum } from "@/entities";
+import { SlugEnum, SlangEnum } from "@/entities/word";
 import { ICreateWordGraphQlVariables } from "../model/model";
 import { IStandartValidateValue } from "@/shared";
 import { StepType } from "@/shared";

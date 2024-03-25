@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { cls } from "@/shared";
-import { useAssideStore } from "@/entities";
+import { useAssideStore } from "@/entities/auth";
 import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
 
 export const AuthAssideDrawer = () => {

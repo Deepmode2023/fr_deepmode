@@ -4,7 +4,7 @@ import {
   LoginUserParamsType,
   ResponseLoginUserType,
 } from "@/interfaces/services/auth";
-import { AuthType } from "@/entities";
+import { AuthType } from "@/entities/auth";
 import { IServiceHooksResponse } from "@/interfaces/service.hooks";
 import { TIME_DISPLAY_TOAST, IDecodeJWT } from "@/shared";
 
@@ -12,7 +12,7 @@ import { parseJwt } from "@/utils/jwt";
 
 import { createSelectorHooks } from "auto-zustand-selectors-hook";
 import { AuthStore } from "@/zustand/authStore";
-import { ToastStore, DisplayToastAdapter } from "@/entities";
+import { ToastStore, DisplayToastAdapter } from "@/entities/toast";
 
 const toastStore = createSelectorHooks(ToastStore);
 const authStore = createSelectorHooks(AuthStore);

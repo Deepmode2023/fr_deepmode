@@ -1,7 +1,7 @@
 import { useState, useCallback, useMemo } from "react";
 import { deleteUserService } from "@/services/api.user";
 import { ResponseUserType } from "@/interfaces/services/user";
-import { DisplayToastAdapter } from "@/entities";
+import { DisplayToastAdapter } from "@/entities/toast";
 import { TIME_DISPLAY_TOAST } from "@/shared";
 import { BodyDetailType } from "@/interfaces/total.response";
 import { IServiceHooksResponse } from "@/interfaces/service.hooks";
