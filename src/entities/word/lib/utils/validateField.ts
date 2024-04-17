@@ -1,18 +1,21 @@
-import { IStandartValidateValue } from "@/shared";
-import { WordType, SlugEnum } from "../../model/models";
+import {
+  IStandartValidateValue,
+  prototypeEnumValidate,
+  SlugEnum,
+  PartOfSpeachEnum,
+  SlangEnum,
+} from "@/shared";
 
 const validateSlug = (value: string): IStandartValidateValue => {
-  Object.entries(SlugEnum).map(([key, value]) => {
-    console.log({ value });
-  });
-
-  return { isValidate: false, message: "" };
+  return prototypeEnumValidate(value, SlugEnum);
 };
 
-export const ValidateField = (
-  fieldName: keyof WordType,
-  value: string
-): IStandartValidateValue => {
-  validateSlug(value);
-  return { isValidate: false, message: "" };
+const validateSlang = (value: string): IStandartValidateValue => {
+  return prototypeEnumValidate(value, SlangEnum);
 };
+
+const validatePartOfSpeach = (value: string): IStandartValidateValue => {
+  return prototypeEnumValidate(value, PartOfSpeachEnum);
+};
+
+export { validateSlug, validatePartOfSpeach, validateSlang };

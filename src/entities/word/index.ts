@@ -1,10 +1,11 @@
-import { ValidateField } from "./lib/utils/validateField";
 import {
-  PartOfSpeachEnum,
-  SlangEnum,
-  SlugEnum,
-  WordType,
-} from "./model/models";
+  validateSlug,
+  validatePartOfSpeach,
+  validateSlang,
+} from "./lib/utils/validateField";
 
-export { ValidateField };
-export type { PartOfSpeachEnum, SlangEnum, SlugEnum, WordType };
+import { SlangSelect } from "./ui/slang-select";
+import { PartOfSpeachSelect } from "./ui/part-of-speach-select";
+
+export { SlangSelect, PartOfSpeachSelect };
+export { validateSlug, validatePartOfSpeach, validateSlang };

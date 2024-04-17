@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import MiddlewareAuth from "@/utils/middleware";
+import { MiddlewareAuth } from "@/shared";
 
 export async function middleware(request: NextRequest | Request) {
   const previusUrl = request.url;

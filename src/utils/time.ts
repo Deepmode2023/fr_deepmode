@@ -1,4 +1,9 @@
-import moment from "moment";
+export const isExpiredTime = (time: string): boolean => {
+  const currentTime = Date.now();
+  const regExp = /^\d+$/gi;
+  if (regExp.test(time)) {
+    return Number(time) < currentTime;
+  }
 
-export const isExpiredTime = (time: string | number): boolean =>
-  Number(moment(time).format("x")) < Number(moment().format("x"));
+  return +new Date(time) < currentTime;
+};

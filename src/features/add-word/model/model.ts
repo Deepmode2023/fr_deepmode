@@ -1,3 +1,3 @@
-import { WordType } from "@/entities/word";
+import { WordType } from "@/shared";
 
 export interface ICreateWordGraphQlVariables extends WordType {}

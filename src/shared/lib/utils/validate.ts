@@ -39,3 +39,37 @@ export const StandartValidate = (
 
   return returnedValue;
 };
+
+export const prototypeEnumValidate = (
+  value: string,
+  Enum: { [key: string]: string }
+) => {
+  let variantSlug = "";
+  const isErorr = Object.entries(Enum).reduce((acc, [_, valueEnum]) => {
+    variantSlug = variantSlug.concat(" ", valueEnum, ",");
+    if (acc) return acc;
+    if (valueEnum === value.toUpperCase()) return true;
+
+    return acc;
+  }, false);
+
+  if (!isErorr) {
+    return {
+      isValidate: false,
+      message: "You need write similar this case ".concat(variantSlug),
+    };
+  }
+
+  return { isValidate: true, message: "" };
+};
+
+export const validateMaxLength = (value: string, maxLength: number) => {
+  if (value.length >= maxLength) {
+    return { isValidate: true, message: "" };
+  }
+
+  return {
+    isValidate: false,
+    message: `Value must be greater than or equal to ${maxLength}.`,
+  };
+};
