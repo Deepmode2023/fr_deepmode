@@ -1,5 +1,5 @@
-import { useAssideStore } from "./lib/hooks/use-asside-store";
 import { AuthType } from "./model/model";
+import { useAuthProvider } from "./lib/hooks/use-auth-provider";
 
-export { useAssideStore };
 export type { AuthType };
+export { useAuthProvider };

@@ -9,7 +9,7 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: "/midleware-prerender",
+        source: "/middleware-prerender",
         destination: "/",
         permanent: true,
       },

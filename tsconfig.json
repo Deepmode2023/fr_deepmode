@@ -42,7 +42,12 @@
     "src/shared/config/word.js",
     "src/shared/lib/utils/**/*.ts",
     "src/shared/lib/utils/*.ts",
-    "src/entities/snackbar/config/constant.js"
+    "src/entities/snackbar/config/constant.js",
+    "src/shared/lib/utils/cls.test.js",
+    "src/shared/api/grpc/session.ts",
+    "src/routes.test.js",
+    "src/routes.test.js",
+    "src/entities/auth/lib/utils/auth.test.js"
   ],
   "exclude": ["node_modules"]
 }

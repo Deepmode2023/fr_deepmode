@@ -85,6 +85,8 @@ import {
   TIME_EXPIRED_TOKEN,
 } from "./config/global";
 
+import { CreateSession } from "./api/grpc/session";
+
 /* CONSTANT */
 export {
   TIME_IN_MS,
@@ -131,6 +133,7 @@ export {
   cls,
   prototypeEnumValidate,
   validateMaxLength,
+  CreateSession,
 };
 
 export { SlangEnum, SlugEnum, PartOfSpeachEnum };
