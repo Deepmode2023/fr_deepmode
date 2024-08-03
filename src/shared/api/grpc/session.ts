@@ -1,12 +1,15 @@
 "use client";
 import { client_session } from "./client";
 /*@ts-ignore */
-import { SessionRequest } from "./protobuff/generated/session_pb";
+import {
+  SessionRequest,
+  ConditionSessionRequest,
+} from "./protobuff/generated/session_pb";
 import {
   CommonFieldResponseType,
   CommonResponseFieldHandler,
   CriticalResponseHandler,
-} from "./core/common";
+} from "../../lib/utils/grpc/common";
 
 type GetterSessionType = {
   getSessionMark: () => string;
@@ -65,5 +68,12 @@ async function CreateSession(
     }
   }
 }
+
+const ConditionStreamSession = () => {
+  const request = ConditionSessionRequest();
+  request.setSessionMark = "somelsdf";
+  request.setStreamCondition = "CONTINUE";
+  request.setStateSessionEnum = "ME";
+};
 
 export { CreateSession };

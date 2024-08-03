@@ -15,8 +15,6 @@ jest.mock("next/navigation", () => {
 });
 
 describe("authRedirect function", () => {
-  const chunk = [{ pathname: "/test1", protected: true }];
-
   afterEach(() => {
     jest.clearAllMocks();
   });

@@ -47,7 +47,8 @@
     "src/shared/api/grpc/session.ts",
     "src/routes.test.js",
     "src/routes.test.js",
-    "src/entities/auth/lib/utils/auth.test.js"
+    "src/entities/auth/lib/utils/auth.test.js",
+    "src/shared/lib/utils/session-storage.test.js"
   ],
   "exclude": ["node_modules"]
 }

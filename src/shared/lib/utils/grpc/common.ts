@@ -1,4 +1,4 @@
-import { GRPC_STATUS_ENUM, RawStatusType } from "./grpc_status";
+import { GRPC_STATUS_ENUM, RawStatusType } from "./grpc-status";
 
 enum StreamConditionEnum {
   CONTINUE = "CONTINUE",

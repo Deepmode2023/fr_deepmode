@@ -6,6 +6,25 @@ import {
   validateMaxLength,
 } from "./lib/utils/validate";
 
+import type {
+  ConditionState,
+  ConditionSessionRequestType,
+  RawStatusType,
+  CommonFieldResponseType,
+} from "./lib/utils/grpc";
+
+import {
+  GRPC_STATUS_ENUM,
+  oneOf,
+  setterGrpcValue,
+  convertKeyToMethodGrpc,
+  enumHelpers,
+  streamConditionEnum,
+  stateSessionEnum,
+  CommonResponseFieldHandler,
+  CriticalResponseHandler,
+} from "./lib/utils/grpc";
+
 import { MiddlewareAuth } from "./lib/utils/middleware";
 import { SessionStorage } from "./lib/utils/session-storage";
 import { AnimationFrame } from "./lib/utils/animateFramer";
@@ -122,6 +141,15 @@ export {
 };
 /* FUNCTION */
 export {
+  GRPC_STATUS_ENUM,
+  oneOf,
+  setterGrpcValue,
+  convertKeyToMethodGrpc,
+  enumHelpers,
+  streamConditionEnum,
+  stateSessionEnum,
+  CommonResponseFieldHandler,
+  CriticalResponseHandler,
   QueueWithTimeout,
   eventTimeoutBus,
   EventBus,
@@ -138,6 +166,10 @@ export {
 
 export { SlangEnum, SlugEnum, PartOfSpeachEnum };
 export type {
+  ConditionState,
+  ConditionSessionRequestType,
+  RawStatusType,
+  CommonFieldResponseType,
   WordType,
   IStandartValidateValue,
   SPECIAL_VALIDATE,
