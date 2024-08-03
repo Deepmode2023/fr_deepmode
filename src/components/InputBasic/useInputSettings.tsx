@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { StandartValidate } from "@/utils/validateInput";
+
 import {
+  StandartValidate,
   SPECIAL_VALIDATE,
   IStandartValidateValue,
-} from "@/interfaces/validate";
+} from "@/shared";
 import { OnClickIconParamsType } from "./interface";
 import { EyeSvg, CloseEyeSvg } from "@/assets/icons";
 import { COLORS, SIZE_ICONS } from "./constants";

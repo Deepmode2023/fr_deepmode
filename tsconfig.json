@@ -35,7 +35,20 @@
     "src/utils/bounce.js",
     "src/components/AuthNavbar/constants.js",
     "src/test/helpers/render.js",
-    "src/components/AuthNavbar/dialogs/index.js"
+    "src/components/AuthNavbar/dialogs/index.js",
+    "src/features/auth-navbar/ui/auth-navbar-drawer.tsc",
+    "src/shared/config/global.js",
+    "src/features/toast/ui/toast.tsч",
+    "src/shared/config/word.js",
+    "src/shared/lib/utils/**/*.ts",
+    "src/shared/lib/utils/*.ts",
+    "src/entities/snackbar/config/constant.js",
+    "src/shared/lib/utils/cls.test.js",
+    "src/shared/api/grpc/session.ts",
+    "src/routes.test.js",
+    "src/routes.test.js",
+    "src/entities/auth/lib/utils/auth.test.js",
+    "src/shared/lib/utils/session-storage.test.js"
   ],
   "exclude": ["node_modules"]
 }

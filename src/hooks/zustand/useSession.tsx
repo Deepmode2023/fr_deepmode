@@ -2,10 +2,12 @@
 import { useEffect, useState } from "react";
 import { AuthStore } from "@/zustand/authStore";
 import { createSelectorHooks } from "auto-zustand-selectors-hook";
-import { LOCALSTORAGE_TOKEN_PK } from "@/global.constant";
-import { parseJwt } from "@/utils/jwt";
-import { UserType } from "@/interfaces/services/auth";
-import { IDecodeJWT } from "@/interfaces/services/user";
+import {
+  LOCALSTORAGE_TOKEN_PK,
+  parseJwt,
+  IDecodeJWT,
+  UserType,
+} from "@/shared";
 
 const authStore = createSelectorHooks(AuthStore);
 

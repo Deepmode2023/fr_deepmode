@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material";
 import { useReducer } from "react";
 
 interface IUseAddWordState {
@@ -61,7 +62,15 @@ const useAddWordState = () => {
     dispatch({ type, value });
   };
 
+  const stepsProps = Object.keys(inputs).map((input) => {
+    return {
+      label: input.replace(/_/g, " "),
+      content: "",
+    };
+  });
+
   return {
+    stepsProps,
     inputs,
     onChange: onChangeValue,
   };

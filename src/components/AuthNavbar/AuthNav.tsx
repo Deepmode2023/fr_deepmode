@@ -6,7 +6,7 @@ import Demo from "@/assets/demo.jpeg";
 import { createSelectorHooks } from "auto-zustand-selectors-hook";
 import { NavbarStore } from "@/zustand/navbarStore";
 import { StackSvg } from "@/assets/icons";
-import { AddWordButton } from "@/components/AuthNavbar/AddWordButton";
+import { AddWordButton } from "@/features/add-word";
 import { AuthSubLinkProperty } from "./constants";
 import { AuthAssideStore } from "@/zustand/authAssideStore";
 import { dialogs } from "./dialogs";
@@ -29,7 +29,7 @@ const AuthNavigation: React.FC<IAuthNavigationProps> = () => {
   );
   return (
     <nav className="p-[10px] w-[400px] h-[100px] select-none grid items-center bg-light-total dark:bg-dark-total  border-l-8 border-light-color1 dark:border-dark-color3 relative">
-      <AddWordButton />
+      <AddWordButton content="step" />
       <div className="absolute top-[10px] right-[30px]">
         <Image
           src={Demo}

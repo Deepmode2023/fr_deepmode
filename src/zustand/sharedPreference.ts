@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { ISharedPreferenceStore } from "@/interfaces/zustand/sharedPreference";
 
-import { LOCALSTORAGE_SHARED_PREFERENCE_PK } from "@/global.constant";
+import { LOCALSTORAGE_SHARED_PREFERENCE_PK } from "@/shared";
 
 export const SharedPreferenceStore = create<ISharedPreferenceStore>()(
   (set) => ({

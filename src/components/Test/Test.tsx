@@ -1,6 +1,5 @@
 "use client";
 import Portal from "@/components/Portal/Portal";
-import { PORTAL_ID } from "@/global.constant";
 import { useState } from "react";
 import { motion } from "framer-motion";
 

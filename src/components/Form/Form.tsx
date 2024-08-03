@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from "react";
 import { useForm } from "./useForm";
 import { IInputWithLabelProps } from "@/components/InputBasic/InputWithLabel";
-import { mergeCls } from "@/utils/cls";
+import { cls } from "@/shared";
 import { ButtonWithLoader } from "@/components";
 
 export type ClassnameType = {
@@ -29,16 +29,13 @@ const Form: FC<IFormProps<unknown>> = ({ classname, ...props }) => {
   const { onSubmit, Inputs, isSubmiting, isDisabled } = useForm(props);
 
   return (
-    <form
-      onSubmit={onSubmit}
-      className={mergeCls("space-y-5", classname?.form)}
-    >
+    <form onSubmit={onSubmit} className={cls("space-y-5", classname?.form)}>
       {Inputs}
       <ButtonWithLoader
         disabled={isDisabled}
         isLoading={Boolean(isSubmiting)}
         type="submit"
-        className={mergeCls(
+        className={cls(
           "dark:bg-dark-total bg-light-total hover:opacity-90 dark:text-dark-color3 text-light-color1",
           "px-[16px] py-[13px] h-[50px] w-[200px] flex justify-center items-center rounded-md",
           "transition-all duration-500",

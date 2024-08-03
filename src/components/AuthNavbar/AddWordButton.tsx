@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
-import { AddButton } from "@/components/AddButton/AddButton";
+import { AddButton } from "@/shared";
 import { IAddWordButtonProps } from "@/interfaces/components/navbar/addwordbutton";
-import { ConditionType } from "@/interfaces/components/addbutton";
+import { ConditionType } from "@/shared";
 import { createSelectorHooks } from "auto-zustand-selectors-hook";
 import { AuthAssideStore } from "@/zustand/authAssideStore";
 import { dialogs } from "./dialogs";

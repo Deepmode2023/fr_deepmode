@@ -1,6 +1,6 @@
 import { useBreadcromps } from "./useBreadcromps";
 import { RightArrowSvg } from "@/assets/icons/navigate";
-import { mergeCls } from "@/utils/cls";
+import { cls } from "@/shared";
 
 import {
   IBreadcrompsProps,
@@ -22,7 +22,7 @@ const Breadcromps = ({
             settingsCursor.rotate
           }deg)`,
         }}
-        className={mergeCls(
+        className={cls(
           cursorColor,
           "absolute rounded-full z-10 p-1 border-2 dark:border-dark-color3 border-light-color1 transition-transform duration-500"
         )}

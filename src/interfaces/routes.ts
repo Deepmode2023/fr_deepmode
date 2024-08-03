@@ -6,14 +6,19 @@ export type ImageContent = {
   url: string;
 };
 
-export interface IRouteInterface {
+export interface IRoute {
   name: string;
   path: string;
   Icon: (props: ISVGIconProps) => JSX.Element;
   title: string;
   active: boolean;
+  protected: boolean;
 }
 
-export interface IRouteWithChildRouteInterface extends IRouteInterface {
-  childRoute: Array<Omit<IRouteInterface, "Icon">>;
+export interface IRouteChild extends Omit<IRoute, "Icon"> {
+  path: string;
+}
+
+export interface IRouteWithChildRouteInterface extends IRoute {
+  childRoute: Array<IRouteChild>;
 }

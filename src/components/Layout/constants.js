@@ -16,9 +16,9 @@ export const LAYOUT_GRID = {
                 max-w-[${SIZED_LAYOUT.NAVBAR.maxWidth}px] relative box-border`,
     // AUTH NAVBAR
     authNavbar:
-      "col-start-3 col-end-5  row-start-1 row-end-3 sticky top-0 z-50 relative box-border",
+      "col-start-3 col-end-5  row-start-1 row-end-3 sticky top-0 z-50 sticky box-border",
     authNavbarAsside:
-      "col-start-4 col-end-5  row-start-3 row-end-4 sticky top-[110px] z-50 relative box-border",
+      "col-start-4 col-end-5  row-start-3 row-end-4 z-50 sticky top-[110px] box-border",
     // CONTENT
     content:
       "col-start-2 col-end-5 row-start-3 row-end-5 z-0 box-border relative",

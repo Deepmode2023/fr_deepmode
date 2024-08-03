@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { motion } from "framer-motion";
 import { RightArrowSvg } from "@/assets/icons/navigate";
-import { mergeCls } from "@/utils/cls";
+import { cls } from "@/shared";
 import { AccordionChildActiveContext } from "./context/AccordionProvider";
 
 import { IAccordionItemProps } from "@/interfaces/components/accordion";
@@ -19,7 +19,7 @@ export const AccordionItem: React.FC<IAccordionItemProps> = ({
 
   return (
     <div
-      className={mergeCls(
+      className={cls(
         "p-[7px] truncate pl-[30px] cursor-pointer hover:text-white ",
         hover && "text-white",
         childActive === keyChildName && "text-white",

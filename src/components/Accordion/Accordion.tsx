@@ -7,7 +7,7 @@ import React, {
 } from "react";
 
 import { IAccordionProps } from "@/interfaces/components/accordion";
-import { mergeCls } from "@/utils/cls";
+import { cls } from "@/shared";
 import { motion, AnimatePresence } from "framer-motion";
 import { AccordionItem } from "./AccordingItem";
 import { IconAccordion } from "./IconAccordion";
@@ -56,7 +56,7 @@ const AccordionStateless: React.FC<IAccordionProps> = ({
       className="border-t-[1px] border-b-[1px] border-dark-palette-100 bg-light-total dark:bg-dark-total"
     >
       <div
-        className={mergeCls(
+        className={cls(
           "text-[#4e535d] stroke-[#4e535d] uppercase hover:bg-light-totalL hover:text-[#ffffff] relative cursor-pointer p-[15px] flex items-center justify-between select-none transition duration-300",
           classes?.header,
           isActive && "text-white"
@@ -75,7 +75,7 @@ const AccordionStateless: React.FC<IAccordionProps> = ({
         {isActive && (
           <motion.div
             style={{ width }}
-            className={mergeCls(
+            className={cls(
               "text-total-colorShadow bg-light-totalL overflow-hidden",
               classes?.itemContainer
             )}
